@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Jane Doe ">
+<meta name="description" content="If debugging is the process of removing software bugs, then programming must be the process of putting them in. - Edsger Dijkstra
+ Challenges With Scripting Irrespective of our role in software development we often work with Linux/Unix(*nix). While working with command line(CLI) on *nix we need to write shell scripts. We automate something with scripts or we do number crunching on some data using shell commands. Most of the time we already know frequently used commands else we google it." />
+<meta name="keywords" content=", python" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#252627" />
+<link rel="canonical" href="https://saurabhkukade.github.io/2018/10/26/python-a-better-scripting-language/" />
+
+
+    <title>
+        
+            Python - A Better Scripting Language. :: SAURABH KUKADE  — Hello Friend NG Theme
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://saurabhkukade.github.io/main.min.84ed5579024525d4b50458514d1a43e40dd5272df45c7cd6da85b225af457154.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://saurabhkukade.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://saurabhkukade.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://saurabhkukade.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://saurabhkukade.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://saurabhkukade.github.io/safari-pinned-tab.svg" color="#252627">
+    <link rel="shortcut icon" href="https://saurabhkukade.github.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#252627">
+    <meta name="theme-color" content="#252627">
+
+<meta itemprop="name" content="Python - A Better Scripting Language.">
+<meta itemprop="description" content="If debugging is the process of removing software bugs, then programming must be the process of putting them in. - Edsger Dijkstra
+ Challenges With Scripting Irrespective of our role in software development we often work with Linux/Unix(*nix). While working with command line(CLI) on *nix we need to write shell scripts. We automate something with scripts or we do number crunching on some data using shell commands. Most of the time we already know frequently used commands else we google it.">
+<meta itemprop="datePublished" content="2018-10-26T16:55:25&#43;05:30" />
+<meta itemprop="dateModified" content="2018-10-26T16:55:25&#43;05:30" />
+<meta itemprop="wordCount" content="891">
+<meta itemprop="image" content="https://saurabhkukade.github.io"/>
+
+
+
+<meta itemprop="keywords" content="python," /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://saurabhkukade.github.io"/>
+
+<meta name="twitter:title" content="Python - A Better Scripting Language."/>
+<meta name="twitter:description" content="If debugging is the process of removing software bugs, then programming must be the process of putting them in. - Edsger Dijkstra
+ Challenges With Scripting Irrespective of our role in software development we often work with Linux/Unix(*nix). While working with command line(CLI) on *nix we need to write shell scripts. We automate something with scripts or we do number crunching on some data using shell commands. Most of the time we already know frequently used commands else we google it."/>
+
+
+
+
+
+    <meta property="article:published_time" content="2018-10-26 16:55:25 &#43;0530 IST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://saurabhkukade.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://saurabhkukade.github.io/about/">About</a></li><li><a href="https://saurabhkukade.github.io/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>5 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title">
+                <a href="https://saurabhkukade.github.io/2018/10/26/python-a-better-scripting-language/">Python - A Better Scripting Language.</a>
+            </h1>
+
+            
+
+            <div class="post-content">
+                <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<blockquote>
+<p>If debugging is the process of removing software bugs, then programming must be the process of putting them in. - Edsger Dijkstra</p>
+</blockquote>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="challenges-with-scripting">Challenges With Scripting</h2>
+<p>Irrespective of our role in software development we often work with Linux/Unix(*nix). While working with command line(CLI) on *nix we need to write shell scripts. We automate something with scripts or we do number crunching on some data using shell commands. Most of the time we already know frequently used commands else we google it. But it becomes tedious if the task is long or complex and it becomes more difficult to find appropriate command or combine more than two commands.</p>
+<p>Now writing scripts are not that easy as using one or two commands with some regex and pipes. It becomes painful and we find some workarounds or we give up. But either way it is time as well as mind consuming task so we tend avoid it because it kills your actual working time. Unless you are full time command line script-er.</p>
+<p>Sometimes you take some of our time out and finish writing that script and feel really proud of yourself (which you should be). But after a month or so when you visit that same script and try to figure out a way tweaking it for new/changed requirement and you find yourself completely lost in the process and because it becomes really hard to make sense out of your code (after visiting it after long time) when it comes to scripting. Now one may argue that it is not only limited to scripting but also happens with other programming task too. True! but I will say with scripting it is more likely to happen and the reason is that with scripting a process of building abstraction is complex as compared to other fancy programming languages and hence we often end up writing context sensitive code when it comes to scripting.</p>
+<p>So lets take a look at how using python helps to overcome some of this problems.</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="why-python-is-good-choice-for-scripting">Why python is good choice for scripting?</h2>
+<ul>
+<li>Python being a very high level language it has features similar to all other typical high level programming languages.</li>
+</ul>
+<p>Python handles a lot of complexity for you and syntax are more user friendly than other classic scripting languages.</p>
+<ul>
+<li>
+<p>Python also provide a nice REPL (interpreter) which becomes handy for trial and error strategy.</p>
+</li>
+<li>
+<p>Rich set of library support and huge developer community for question and answers on IRC, mailing list and stack-overflow.</p>
+</li>
+<li>
+<p>Libraries written in python to interact with OS are the wrappers around OS specific library. So in this way those library are generic.</p>
+</li>
+</ul>
+<p>So you can easily write python script on one specific OS and can use same on another OS without any changes.</p>
+<ul>
+<li>To write script using python you don&rsquo;t have to have full fledged IDE, you just need an editor (vim or any other) and a python binary.</li>
+</ul>
+<p>So I can say it is this much lightweight in this sense.</p>
+<ul>
+<li>And one of the most important reason which I believe to choose python for scripting over classic scripting languages is that</li>
+</ul>
+<p>python gives you a better programming environment than shell. Meaning, you call pull out data by firing shell commands through python code and bring that output to better programming arena and you can mold that data, extract some pattern from data, compute something on that data, write it to another file, send that data over the network with much easiness with python code. All of this becomes easy because python provides features of typical programming language and the process of building abstraction becomes much more easier and that results into keeping your code more readable, maintainable and extendable.</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="let-me-show-you-short-example">Let me show you short example.</h2>
+<p>Lets assume we have one file which has some text containing IP address (similar to output of &lsquo;ip addr&rsquo; command). Now the task is first extract all the IP addresses from the file and then check one by one that IP address is up or down. Task may sound simple but I urge you to take a pause here and try to write script for the same using shell commands or at least just try to think that how it could be done.</p>
+<p>file: sample_text_file.txt</p>
+<pre><code>~]# ip address add 192.1.2.223/24 dev eth1
+~]# ip address add 192.165.4.223/24 dev eth0
+~]# ip addr
+3: eth1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 52:54:00:fb:77:9e brd ff:ff:ff:ff:ff:ff
+    inet 192.168.8.1/24 scope global eth1
+    inet 192.168.4.23/24 scope global eth1
+
+</code></pre><p>Done?</p>
+<p>Now lets do this with python script.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sys
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">import</span> re
+
+<span style="color:#75715e"># function to extract all ip address from a file.</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_all_ip_from_file</span>(file_path):
+
+    file_data <span style="color:#f92672">=</span> open(file_path, <span style="color:#e6db74">&#34;r&#34;</span>)<span style="color:#f92672">.</span>readlines()
+    ip_address_list <span style="color:#f92672">=</span> [] <span style="color:#75715e"># List to store ip address</span>
+    <span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> data:
+        ips_on_line <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>findall( <span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;[0-9]+(?:\.[0-9]+){3}&#39;</span>, line ) 
+        ip_address_list <span style="color:#f92672">=</span> ip_adress_list <span style="color:#f92672">+</span> ips_on_line
+    <span style="color:#66d9ef">return</span> ip_address_list
+
+<span style="color:#75715e"># function to check if the ip is Up or Down</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">check_if_ip_up_or_down</span>(ip):
+
+    response <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>system(<span style="color:#e6db74">&#34;ping -c 1 &#34;</span> <span style="color:#f92672">+</span> ip) 
+    <span style="color:#66d9ef">if</span> response <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">print</span> ip, <span style="color:#e6db74">&#39;is up!&#39;</span>
+        <span style="color:#66d9ef">return</span> True
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">print</span> ip, <span style="color:#e6db74">&#39;is down!&#39;</span>
+        <span style="color:#66d9ef">return</span> False
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+    ip_list <span style="color:#f92672">=</span> get_all_ip_from_file(<span style="color:#e6db74">&#39;sample_text_file.txt&#39;</span>)
+    <span style="color:#66d9ef">for</span> ip <span style="color:#f92672">in</span> ip_list:
+        status <span style="color:#f92672">=</span> check_if_ip_up_or_down(ip)
+        <span style="color:#66d9ef">print</span> ip <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; --&gt; &#34;</span><span style="color:#f92672">+</span> str(status)
+
+main()
+
+</code></pre></div><p>I hope you get the point with this little demo. Please feel free to put your comment/opinion/critisim in comment section down below. I will be happy to discuss more. Happy coding!!!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://saurabhkukade.github.io/tags/python">python</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>891 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2018-10-26 16:55 &#43;0530</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h"></span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+                        <span class="button previous">
+                            <a href="https://saurabhkukade.github.io/2019/10/14/meta-programming-in-python/">
+                                <span class="button__icon">←</span>
+                                <span class="button__text">Meta-programming In Python</span>
+                            </a>
+                        </span>
+                    
+
+                    
+                        <span class="button next">
+                            <a href="https://saurabhkukade.github.io/2018/05/22/the-world-lambdas-introduction/">
+                                <span class="button__text">The World of Lambdas</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    
+                </div>
+            </div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            
+                <span><a href="https://saurabhkukade.github.io">Jane Doe</a></span>
+            
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span> <a href="https://saurabhkukade.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://saurabhkukade.github.io/bundle.min.2d5469329143160ae2456a69c3c76dc2d0a3b212b46afe291a51bd68650ed6f8697e001dab54f1c272c77ce08092a8c55e5bb4314e0ee334aab4b927ec896638.js" integrity="sha512-LVRpMpFDFgriRWppw8dtwtCjshK0av4pGlG9aGUO1vhpfgAdq1TxwnLHfOCAkqjFXlu0MU4O4zSqtLkn7IlmOA=="></script>
+
+
+
+    </body>
+</html>

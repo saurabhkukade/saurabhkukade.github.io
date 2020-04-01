@@ -1,0 +1,553 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on SAURABH KUKADE</title>
+        <link>https://saurabhkukade.github.io/posts/</link>
+        <description>Recent content in Posts on SAURABH KUKADE</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+        <lastBuildDate>Fri, 13 Dec 2019 16:55:25 +0530</lastBuildDate>
+        <atom:link href="https://saurabhkukade.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Erlang is not just a language, it is a philosophy</title>
+            <link>https://saurabhkukade.github.io/2019/12/13/erlang-is-not-just-a-language-it-is-a-philosophy/</link>
+            <pubDate>Fri, 13 Dec 2019 16:55:25 +0530</pubDate>
+            
+            <guid>https://saurabhkukade.github.io/2019/12/13/erlang-is-not-just-a-language-it-is-a-philosophy/</guid>
+            <description>“Science is what we understand well enough to explain to a computer. Art is everything else we do.” — Donald Knuth
+ Recently I was having this conversation with my colleague that why Erlang has good support for concurrency and why it should be use for building distributed systems.
+I would like to share my findings on this topic in this article. This article is just a high level overview of philosophy of Erlang hence it contains no code example.</description>
+            <content type="html"><![CDATA[<blockquote>
+<p>“Science is what we understand well enough to explain to a computer. Art is everything else we do.” — Donald Knuth</p>
+</blockquote>
+<p>Recently I was having this conversation with my colleague that why Erlang has good support for concurrency and why it should be use
+for building distributed systems.</p>
+<p>I would like to share my findings on this topic in this article.
+This article is just a high level overview of philosophy of Erlang hence it contains no code example.</p>
+<h2 id="the-problem">The Problem</h2>
+<p>No description of a software is complete without describing the type of problem that is supposed to be solved using the software. Every software piece ever made till date is to solve some specific problem. Erlang is no exception!
+Erlang was originally designed to build telecom switching systems. To understand philosophy of Erlang we must understand the what are requirements for the properties of a telecom system.</p>
+<h3 id="the-requirements">The requirements:</h3>
+<ol>
+<li>System must be able to handle very large number of concurrent activities</li>
+<li>Action must be completed in certain time. It is strictly time bounded.</li>
+<li>System must be distributed over several computers.</li>
+<li>The system should be in continuous operation for many years.</li>
+<li>Reconfiguration should be performed without stopping the system.</li>
+<li>They have strict requirements of quality and reliability.</li>
+<li>System must be fault tolerant.</li>
+<li>Telecom system expect to run FOREVER!</li>
+</ol>
+<p>So to meet all this above requirements a programming language and underlying system (on which code will run) must provide and support
+this following features:</p>
+<ol>
+<li>High support for concurrency</li>
+<li>Real-time actions. (Actions must be completed in specific time)</li>
+<li>System should easily scale from single to multi-node distributed system.</li>
+<li>Continuous operation and in-place up-gradation. Software upgrade must be performed “in-place” i.e. without stopping system.</li>
+</ol>
+<p>So the ultimate problem which Erlang supposed to solve is “how to make reliable distributed systems in the presence of software errors”.</p>
+<p>Conventional programming languages do not solve this problem because they do not allow different software modules to co-exist in such a way that there is no interference between modules.</p>
+<p>The commonly used threads model of programming, where resources are shared, makes it extremely difficult to isolate components from each other so that errors in one component can propagate to another component and damage the internal consistency of the system.</p>
+<p>So how Erlang is different than this conventional programming languages? Well Erlang belongs to the family of pure message passing languages. It is a concurrent process-based language having strong isolation between concurrent processes.</p>
+<h2 id="the-philosophy">The Philosophy</h2>
+<p>Having said that, lets see some important principals from philosophy of Erlang which make it suitable for solving this problem.</p>
+<ul>
+<li>
+<h4 id="everything-is-a-process">Everything is a process.</h4>
+</li>
+</ul>
+<p>In context of Erlang a process can be thought of as a self-contained virtual machine. Each process must be identified by a unique unforgettable identifier. Pid of the process.</p>
+<p>If you know the Pid of a process only then you can send a message to the process. Process creation and destruction is a lightweight operation so that system should scale easily</p>
+<ul>
+<li>
+<h4 id="processes-are-strongly-isolated">Processes are strongly isolated</h4>
+</li>
+</ul>
+<p>Two processes operating on the same machine must be as independent as if they ran on physically separated machines.</p>
+<p>Processes have “share nothing” semantics. This is obvious since they are imagined to run on physically separated machines.</p>
+<p>Hence there is no shared data or shared resource between two processes then obvious problems of concurrency due to sharing are automatically avoided.</p>
+<ul>
+<li>
+<h4 id="message-passing-is-the-only-way-for-processes-to-interact">Message passing is the only way for processes to interact</h4>
+</li>
+</ul>
+<p>Message passing is the only way to pass data between processes. Again since nothing is shared this is the only means possible to exchange data.</p>
+<p>Process isolation implies that message passing is asynchronous.</p>
+<p>If it is synchronous then error in receiver of message could block indefinitely sender of message destroying the property of isolation.</p>
+<p>Message passing is assumed to be atomic which means that a message is either delivered in its entirety or not at all.</p>
+<ul>
+<li>
+<h4 id="let-it-crash">Let it crash</h4>
+</li>
+</ul>
+<p>If error occurs withing a process then rather than trying to actively prevent it, you let it crash, and put in place a policy that allows it to immediately restart and recover on a clean slate.</p>
+<ul>
+<li>
+<h4 id="error-handling-is-non-local">Error handling is non-local</h4>
+</li>
+</ul>
+<p>That means a process won’t do its own error handling.</p>
+<p>Erlang has “fail-fast” philosophy that means processes do what they are supposed to do or fail. i.e. Process must obey single responsibility principle.</p>
+<p>It should be possible for one process to detect failure in another process and we should also know the reason for failure.</p>
+<p>There should be another separate process to do error handling of other process. Again single responsibility principle.</p>
+<p>This philosophy of Erlang makes system highly concurrent, reliable, scalable and fault tolerant.</p>
+<h2 id="the-real-world-use">The Real World Use</h2>
+<p>So who uses Erlang? Does it deliver its promise to make reliable distributed systems in the presence of software errors?</p>
+<p>Well one of the leading messaging app company ‘WhatsApp’ uses Erlang for its communication module. They adopted Erlang cause they had strong requirement of concurrency, scalability, real-time actions and fault tolerant
+system. Whatsapp handles over 65 billion messages every day while providing reliable service to its users.</p>
+<p>So from this example I can say Yes! Erlang does deliver its promise.</p>
+<p>Other companies also use Erlang, one of the largest user of Erlang is Ericsson. Ericsson use it to write software used in telecommunications systems.</p>
+<h2 id="final-note">Final Note</h2>
+<p>They say code is obsolete ideas are not. Whether to you use Erlang may vary on various parameters, but philosophy behind it very generic and can be applied to solve real world problems in distributed computing. Hence Erlang is not just a language, it is a philosophy.</p>
+<p>I hope that this article has helped you is some way. Criticism is always welcome!</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Meta-programming In Python</title>
+            <link>https://saurabhkukade.github.io/2019/10/14/meta-programming-in-python/</link>
+            <pubDate>Mon, 14 Oct 2019 16:55:25 +0530</pubDate>
+            
+            <guid>https://saurabhkukade.github.io/2019/10/14/meta-programming-in-python/</guid>
+            <description>“Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away.” – Antoine de Saint-Exupery
+ Recently I encountered with very fascinating concept which is &amp;ldquo;Meta-programming in Python&amp;rdquo;. I would like to share my findings about this topic in this article. I hope it may help you to wrap your head around this because they say it is tough nut to crack.</description>
+            <content type="html"><![CDATA[<blockquote>
+<p>“Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away.” – Antoine de Saint-Exupery</p>
+</blockquote>
+<p>Recently I encountered with very fascinating concept which is &ldquo;Meta-programming in Python&rdquo;. I would like to share my
+findings about this topic in this article. I hope it may help you to wrap your head around this because they say
+it is tough nut to crack.</p>
+<h3 id="what-is-meta-programming">What is Meta-programming?</h3>
+<p>So in one line:</p>
+<blockquote>
+<p>&ldquo;Meta-programming is a act of writing code which manipulates code.&rdquo;</p>
+</blockquote>
+<p>Wait what? yes you read it right. Code which manipulate code. Isn&rsquo;t it sound fascinating and powerful? Well actually it is.</p>
+<p>In the context of Python, meta-programming can be stated as:</p>
+<blockquote>
+<p>&ldquo;Meta-programming is an act of building functions and classes who can manipulate code by modifying, wrapping existing code or generating code.&rdquo;</p>
+</blockquote>
+<p>Meta-programming in python can be achieved by:</p>
+<ol>
+<li>Decorators</li>
+<li>Meta-classes</li>
+</ol>
+<p>Lets get familiar with them one by one.</p>
+<h4 id="decorators">Decorators</h4>
+<p>Decorator is way to add new functionality to existing function without modifying its original structure.</p>
+<p>For instance we have this 3 following functions:</p>
+<pre><code>def add(x, y):
+    return x + y    
+
+def sub(x, y):
+    return x - y
+    
+def mul(x, y):
+    return x * y    
+</code></pre><p>Now we need to print function name and parameter values when function get called. This should be applicable to all three function above.
+Naive way is to add print/log statement to all three functions. But this sounds very repetitive work and also need to modify each function body.</p>
+<pre><code>def add(x, y):
+    print(&quot;add is called with parameter {0},{1}&quot;.format(x,y))
+    return x + y    
+
+def sub(x, y):
+    print(&quot;sub is called with parameter {0},{1}&quot;.format(x,y))
+    return x - y
+    
+def mul(x, y):
+    print(&quot;mul is called with parameter {0},{1}&quot;.format(x,y))
+    return x * y    
+
+print(add(5,3))
+print(sub(5,3))
+print(mul(5,3))
+
+*********************** output *********************
+
+add is called with parameter 5, 3
+8
+sub is called with parameter 5, 3
+2
+mul is called with parameter 5, 3
+15   
+
+</code></pre><p>Can we do better?
+Of course we can because by the grace of god we are programmers and programmers are intelligent.
+We can achieve this by writing decorator function and by NOT modifying any of existing function body.</p>
+<pre><code>def my_decorator(func):
+    def wrapper_function(*args):
+        print(&quot;{0} is called with parameter {1}&quot;.format(func.__name__, args))
+        return func(*args)
+    return wrapper_function
+
+@my_decorator
+def add(x, y):
+    return x + y
+    
+@my_decorator
+def sub(x, y):
+    return x - y
+
+@my_decorator    
+def mul(x, y):
+    return x * y 
+
+*********************** output *********************
+
+add is called with parameter (5, 3)
+8
+sub is called with parameter (5, 3)
+2
+mul is called with parameter (5, 3)
+15 
+</code></pre><p>Bingo!
+In above code snippet <em>my_decorator</em> is decorator function and we
+decorate all three functions with <em>@my_decorator</em> and we have not touch existing function body to add this print
+functionality.</p>
+<p>So basically decorators are higher order function which takes function as argument and returns another function.
+Here <em>my_decorator</em> takes function as argument and return <em>wrapper_function</em> as result where <em>wrapper_function</em>
+adds our print functionality to <em>func</em>.</p>
+<p>There is more to decorators but this a brief introduction to decorators in python.</p>
+<h4 id="meta-classes">Meta-classes</h4>
+<p>Now we seen decorators, those are for decorating functions. But there is more to meta-programming than decorators, &ldquo;Meta-classes&rdquo;.</p>
+<p>Meta-classes are special type of classes than ordinary classes in python.
+Where ordinary class defines behaviour of its own instance, meta-class defines behaviour of &ldquo;ordinary&rdquo; class and its instance.
+Meta-class can add or subtract method or field to ordinary class.
+Python has one special class &ldquo;type&rdquo; class which is default meta-class. All custom type class must inherit from type class.</p>
+<p>For instance if we have class &ldquo;Calc&rdquo; having three class methods and we want to provide debug functionality to all
+the methods in one class then we can use meta-class for this.</p>
+<pre><code>class Calc():
+    def add(self, x, y):
+        return x + y
+    
+    def sub(self, x, y):
+        return x - y
+    
+    def mul(self, x, y):
+        return x * y
+</code></pre><p>First we need to create a meta class &ldquo;MetaClassDebug&rdquo; having debug functionality and make Calc class inherit from MetaClassDebug.
+And when we call any method from Calc class it will get invoke with our debug_function.</p>
+<pre><code>def debug_function(func):
+
+   def wrapper(*args, **kwargs):
+       print(&quot;{0} is called with parameter {1}&quot;.format(func.__qualname__, args[1:]))
+       return func(*args, **kwargs)
+   
+   return wrapper
+
+
+def debug_all_methods(cls):
+
+   for key, val in vars(cls).items():
+       if callable(val):
+           setattr(cls, key, debug_function(val))
+   return cls
+
+
+class MetaClassDebug(type):
+
+   def __new__(cls, clsname, bases, clsdict):
+       obj = super().__new__(cls, clsname, bases, clsdict)
+       obj = debug_all_methods(obj)
+       return obj
+
+
+class Calc(metaclass=MetaClassDebug):
+   def add(self, x, y):
+       return x + y
+
+   def sub(self, x, y):
+       return x - y
+
+   def mul(self, x, y):
+       return x * y
+
+
+calc = Calc()
+print(calc.add(2, 3))
+print(calc.sub(2, 3))
+print(calc.mul(2, 3))
+
+
+**************** output ****************
+
+Calc.add is called with parameter (2, 3)
+5
+Calc.sub is called with parameter (2, 3)
+-1
+Calc.mul is called with parameter (2, 3)
+6
+
+</code></pre><p>Bingo!
+In above snippet we create a meta-class <em>MetaClassDebug</em> and write <em><strong>new</strong></em> method which is responsible of creating
+instance of class and applied our decorator function <em>debug_function</em> to the object(instance) which will get created
+of every class which inherit <em>MetaClassDebug</em>.
+As Calc is inherited from <em>MetaClassDebug</em> hence every method has been decorated by <em>debug_function</em> from <em>debug_all_methods</em>.</p>
+<p>This way we can add new behaviour to all methods within a class and also control instance creation of a class using meta-class.
+There can be much achieved by meta-class like adding a method or field to class or removing a method or field from a class and many more.</p>
+<p>I wanted you to give glance of meta-programming in python so I could not cover all the things in this post.
+I hope this article would have helped you to get familiarize with the concept of meta-programming.
+Comment as well as criticism is always welcome!</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Python - A Better Scripting Language.</title>
+            <link>https://saurabhkukade.github.io/2018/10/26/python-a-better-scripting-language/</link>
+            <pubDate>Fri, 26 Oct 2018 16:55:25 +0530</pubDate>
+            
+            <guid>https://saurabhkukade.github.io/2018/10/26/python-a-better-scripting-language/</guid>
+            <description>If debugging is the process of removing software bugs, then programming must be the process of putting them in. - Edsger Dijkstra
+ Challenges With Scripting Irrespective of our role in software development we often work with Linux/Unix(*nix). While working with command line(CLI) on *nix we need to write shell scripts. We automate something with scripts or we do number crunching on some data using shell commands. Most of the time we already know frequently used commands else we google it.</description>
+            <content type="html"><![CDATA[<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<blockquote>
+<p>If debugging is the process of removing software bugs, then programming must be the process of putting them in. - Edsger Dijkstra</p>
+</blockquote>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="challenges-with-scripting">Challenges With Scripting</h2>
+<p>Irrespective of our role in software development we often work with Linux/Unix(*nix). While working with command line(CLI) on *nix we need to write shell scripts. We automate something with scripts or we do number crunching on some data using shell commands. Most of the time we already know frequently used commands else we google it. But it becomes tedious if the task is long or complex and it becomes more difficult to find appropriate command or combine more than two commands.</p>
+<p>Now writing scripts are not that easy as using one or two commands with some regex and pipes. It becomes painful and we find some workarounds or we give up. But either way it is time as well as mind consuming task so we tend avoid it because it kills your actual working time. Unless you are full time command line script-er.</p>
+<p>Sometimes you take some of our time out and finish writing that script and feel really proud of yourself (which you should be). But after a month or so when you visit that same script and try to figure out a way tweaking it for new/changed requirement and you find yourself completely lost in the process and because it becomes really hard to make sense out of your code (after visiting it after long time) when it comes to scripting. Now one may argue that it is not only limited to scripting but also happens with other programming task too. True! but I will say with scripting it is more likely to happen and the reason is that with scripting a process of building abstraction is complex as compared to other fancy programming languages and hence we often end up writing context sensitive code when it comes to scripting.</p>
+<p>So lets take a look at how using python helps to overcome some of this problems.</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="why-python-is-good-choice-for-scripting">Why python is good choice for scripting?</h2>
+<ul>
+<li>Python being a very high level language it has features similar to all other typical high level programming languages.</li>
+</ul>
+<p>Python handles a lot of complexity for you and syntax are more user friendly than other classic scripting languages.</p>
+<ul>
+<li>
+<p>Python also provide a nice REPL (interpreter) which becomes handy for trial and error strategy.</p>
+</li>
+<li>
+<p>Rich set of library support and huge developer community for question and answers on IRC, mailing list and stack-overflow.</p>
+</li>
+<li>
+<p>Libraries written in python to interact with OS are the wrappers around OS specific library. So in this way those library are generic.</p>
+</li>
+</ul>
+<p>So you can easily write python script on one specific OS and can use same on another OS without any changes.</p>
+<ul>
+<li>To write script using python you don&rsquo;t have to have full fledged IDE, you just need an editor (vim or any other) and a python binary.</li>
+</ul>
+<p>So I can say it is this much lightweight in this sense.</p>
+<ul>
+<li>And one of the most important reason which I believe to choose python for scripting over classic scripting languages is that</li>
+</ul>
+<p>python gives you a better programming environment than shell. Meaning, you call pull out data by firing shell commands through python code and bring that output to better programming arena and you can mold that data, extract some pattern from data, compute something on that data, write it to another file, send that data over the network with much easiness with python code. All of this becomes easy because python provides features of typical programming language and the process of building abstraction becomes much more easier and that results into keeping your code more readable, maintainable and extendable.</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="let-me-show-you-short-example">Let me show you short example.</h2>
+<p>Lets assume we have one file which has some text containing IP address (similar to output of &lsquo;ip addr&rsquo; command). Now the task is first extract all the IP addresses from the file and then check one by one that IP address is up or down. Task may sound simple but I urge you to take a pause here and try to write script for the same using shell commands or at least just try to think that how it could be done.</p>
+<p>file: sample_text_file.txt</p>
+<pre><code>~]# ip address add 192.1.2.223/24 dev eth1
+~]# ip address add 192.165.4.223/24 dev eth0
+~]# ip addr
+3: eth1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 52:54:00:fb:77:9e brd ff:ff:ff:ff:ff:ff
+    inet 192.168.8.1/24 scope global eth1
+    inet 192.168.4.23/24 scope global eth1
+
+</code></pre><p>Done?</p>
+<p>Now lets do this with python script.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sys
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">import</span> re
+
+<span style="color:#75715e"># function to extract all ip address from a file.</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_all_ip_from_file</span>(file_path):
+
+    file_data <span style="color:#f92672">=</span> open(file_path, <span style="color:#e6db74">&#34;r&#34;</span>)<span style="color:#f92672">.</span>readlines()
+    ip_address_list <span style="color:#f92672">=</span> [] <span style="color:#75715e"># List to store ip address</span>
+    <span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> data:
+        ips_on_line <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>findall( <span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;[0-9]+(?:\.[0-9]+){3}&#39;</span>, line ) 
+        ip_address_list <span style="color:#f92672">=</span> ip_adress_list <span style="color:#f92672">+</span> ips_on_line
+    <span style="color:#66d9ef">return</span> ip_address_list
+
+<span style="color:#75715e"># function to check if the ip is Up or Down</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">check_if_ip_up_or_down</span>(ip):
+
+    response <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>system(<span style="color:#e6db74">&#34;ping -c 1 &#34;</span> <span style="color:#f92672">+</span> ip) 
+    <span style="color:#66d9ef">if</span> response <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">print</span> ip, <span style="color:#e6db74">&#39;is up!&#39;</span>
+        <span style="color:#66d9ef">return</span> True
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">print</span> ip, <span style="color:#e6db74">&#39;is down!&#39;</span>
+        <span style="color:#66d9ef">return</span> False
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+    ip_list <span style="color:#f92672">=</span> get_all_ip_from_file(<span style="color:#e6db74">&#39;sample_text_file.txt&#39;</span>)
+    <span style="color:#66d9ef">for</span> ip <span style="color:#f92672">in</span> ip_list:
+        status <span style="color:#f92672">=</span> check_if_ip_up_or_down(ip)
+        <span style="color:#66d9ef">print</span> ip <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; --&gt; &#34;</span><span style="color:#f92672">+</span> str(status)
+
+main()
+
+</code></pre></div><p>I hope you get the point with this little demo. Please feel free to put your comment/opinion/critisim in comment section down below. I will be happy to discuss more. Happy coding!!!</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>The World of Lambdas</title>
+            <link>https://saurabhkukade.github.io/2018/05/22/the-world-lambdas-introduction/</link>
+            <pubDate>Tue, 22 May 2018 16:55:25 +0530</pubDate>
+            
+            <guid>https://saurabhkukade.github.io/2018/05/22/the-world-lambdas-introduction/</guid>
+            <description>Introduction To World Of Lambdas. Lambda expression is appearing in every other programming language and gaining a popularity amongs the developers. So what is the lambda expression? Why should we use it? Is it just anonymous function? what powers does it gives to programmer? Lets discuss all this in details in this series of posts.
+In this post, we will see the brief introduction to lambda expressions and how to express them in programming language independent way.</description>
+            <content type="html"><![CDATA[<h1 id="introduction-to-world-of-lambdasa-idsec-1-namesec-1a">Introduction To World Of Lambdas.<!-- raw HTML omitted --><!-- raw HTML omitted --></h1>
+<p>Lambda expression is appearing in every other programming language and gaining a popularity
+amongs the developers. So what is the lambda expression? Why should we use it? Is it just anonymous
+function? what powers does it gives to programmer? Lets discuss all this in details in this series
+of posts.</p>
+<p>In this post, we will see the brief introduction to lambda expressions and how to express them in
+programming language independent way.</p>
+<h2 id="introductiona-idsec-1-1-namesec-1-1a">Introduction<!-- raw HTML omitted --><!-- raw HTML omitted --></h2>
+<p>Lambda expressions or if I say lambda functions are anonymous functions with no names.
+They only accept one input variable, with certain operations used to implement a function
+with several variables.</p>
+<p>Lambda expressions are powerfull because we can create a higher order function using them.
+Here by higher order function I mean a function which can accept a another function as
+argument or return a function as output.</p>
+<p>But to able to able to create and use lambda expressions in meaningfull manner we should know
+the “Lambda Calculus”.</p>
+<p>Lambda Caluclus is a language of lambda terms(expressions) which is defined by certain formal
+syntax and set of transformation rules, which manipulate the lambda terms.</p>
+<h2 id="historya-idsec-1-2-namesec-1-2a">History<!-- raw HTML omitted --><!-- raw HTML omitted --></h2>
+<ul>
+<li>Lambda calculus was first introduced by mathematician Alonzo Church in 1930s as part of his
+research.</li>
+<li>Lambda calculus is a universal model of computation that can be simulated by any Turing Machine.</li>
+</ul>
+<h2 id="basics-of-lambda-calculusa-idsec-1-3-namesec-1-3a">Basics of Lambda Calculus<!-- raw HTML omitted --><!-- raw HTML omitted --></h2>
+<p>To be able to understand the power of lambda, we must know the basics of it so that we will be
+a able to form lambda expressions by our own to use in any of our favourite programming language.</p>
+<h3 id="expressing-lambda-termsa-idsec-1-3-1-namesec-1-3-1a">Expressing Lambda Terms<!-- raw HTML omitted --><!-- raw HTML omitted --></h3>
+<p>Lets see how to express lambda terms in programming language independent form.
+There are three forms of lambda terms.</p>
+<ol>
+<li>Variable</li>
+<li>Abstraction</li>
+<li>Application</li>
+</ol>
+<p>Lets discuss each them in brief.</p>
+<ol>
+<li>
+<p>Variable</p>
+<p>Variable can be a character or String representing a parameter or mathematical(numerical)/logical
+value.
+Example: X, 1, var, True, False</p>
+<pre><code>x
+
+1
+
+True
+
+False
+</code></pre>
+</li>
+<li>
+<p>Abstraction</p>
+<p>Abstraction is function defination. It can be thought as just constructing any other function with
+arguments.
+Example: To construct a increment function which accepts one parameter and returns adding one to it.</p>
+<pre><code>(λx.x + 1)
+</code></pre>
+<p>In above expression, before the (.) dot “λx” is where we are declaring an anonymous function with
+parameter ‘x’ and after the (.) dot “x+1” is a function body where are writing a logic of a function.</p>
+<p>Please note that &lsquo;+&rsquo; operator used in above expression and below one also is not a lambda term. But I am using it
+just for intuition. It can be think of as another lambda abstraction for plus operation.</p>
+<p>Another example of addtion of two numbers can be constructed as:</p>
+<pre><code>(λxy.x + y)
+</code></pre>
+</li>
+<li>
+<p>Applicattion</p>
+<p>Application is applying one function to an argument. Where argument is another lambda term.
+Example:</p>
+<pre><code>(λx.x+1)(2)
+</code></pre>
+<p>In above expression we are applying a variable(lambda term) “2” to another lambda term “λx.x + 1”
+which is a lambda Abstraction.</p>
+<p>So this is how we construct lambda expressions in three forms. Variable, Abstraction, Application.
+To summurise the inductive defination of lambda expressions with three rules which can be use to
+construct valid lambda terms:</p>
+<ol>
+<li>A variable, x, is itself a valid lambda term</li>
+<li>If ‘t’ is a lambda term, and ‘x’ is a variable, then &ldquo;(λx.t)&rdquo; is a lambda term (called a lambda abstraction);</li>
+<li>if ‘t’ and ‘s’ are lambda terms, &ldquo;(ts)&rdquo; is a lambda term (called an application).</li>
+</ol>
+</li>
+</ol>
+<h2 id="final-notea-idsec-1-4-namesec-1-4a">Final Note<!-- raw HTML omitted --><!-- raw HTML omitted --></h2>
+<p>This was just introduction to lambda calculus to give you an idea what lambda expressions are and
+how to construct valid lambda expressions. In the next post we will discuss about free and bound
+variables and evaluating a lambda terms with alpha-conversion and beta-reduction.</p>
+<p>Please comment below for any queries, suggestions and also if you find any mistake in above post.
+Thank You!</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Why Emacs</title>
+            <link>https://saurabhkukade.github.io/2019/06/04/why-emacs/</link>
+            <pubDate>Mon, 12 Jun 2017 16:55:25 +0530</pubDate>
+            
+            <guid>https://saurabhkukade.github.io/2019/06/04/why-emacs/</guid>
+            <description>&amp;ldquo;Emacs outshines all other editing software in approximately the same way that the noonday sun does the stars. It is not just bigger and brighter; it simply makes everything else vanish.”
+  -Neal Stephenson, “In the Beginning was the Command Line”
+ Introduction This is my first blog post about Emacs. I want to discuss step by step customization of Emacs for beginner. If you’re new to Emacs then you are in the right place, if you’re already familiar with Emacs then that is even better, I assure you that we will get to know many new things in here.</description>
+            <content type="html"><![CDATA[<p><img src="../img/emacs.jpeg" alt="Image of Emacs"></p>
+<blockquote>
+<p>&ldquo;Emacs outshines all other editing software in approximately the same way that the noonday sun does the stars. It is not just bigger and brighter; it simply makes everything else vanish.”</p>
+</blockquote>
+<blockquote>
+<p>-Neal Stephenson, “In the Beginning was the Command Line”</p>
+</blockquote>
+<h2 id="introduction">Introduction</h2>
+<p>This is my first blog post about Emacs. I want to discuss step by step customization of Emacs for beginner. If you’re new to Emacs then you are in the right place, if you’re already familiar with Emacs then that is even better, I assure you that we will get to know many new things in here.</p>
+<p>Before getting into how to customize Emacs and what are the exciting features of Emacs I want to write about “why Emacs”.</p>
+<h2 id="why-emacs">Why Emacs?</h2>
+<p>This was first question crossed my mind when one wise man asked me to try Emacs instead of VIM. Well, I am not writing this article to discuss a battle between two editors VIM and Emacs. That is a another story for another day. But Why Emacs? Well here are some things that justifies that Emacs is powerful and highly customizable.</p>
+<h2 id="41-years">41 Years!</h2>
+<p>Initial release year of Emacs is 1976 that means Emacs is standing and adapting changes from last 41 years.</p>
+<p>41 years of time for a software is huge and that makes Emacs is one of the best Software Engineering product.</p>
+<h2 id="lisp-emacs-lisp">Lisp (Emacs Lisp)</h2>
+<p>If you are lisp programmer (lisper) then I don’t need to explain you. But for those who don’t know Lisp and its dialects like Scheme, Clojure then
+Lisp (and all dialects of Lips) is powerful programming language and it stands different from other languages because of its unique property of “Homoiconicity”.</p>
+<p>As Emacs is implemented in C and Emacs Lisp (Emacs Lisp is a dialect of the Lisp programming language) it makes Emacs what is because,</p>
+<ul>
+<li>
+<p>The simple syntax of Lisp, together with the powerful editing features made possible by that simple syntax, add up to a more convenient programming system than is practical with other languages. Lisp and extensible editors are made for each other.</p>
+</li>
+<li>
+<p>The simplicity of Lisp syntax makes intelligent editing operations easier to implement, while the complexity of other languages discourages their users from implementing similar operations for them.</p>
+</li>
+</ul>
+<h2 id="highly-customizable">Highly Customizable</h2>
+<p>To any programmer, tools gives power and convenience for reading, writing and managing a code.</p>
+<p>Hence, if a tool is programmatic-ally customizable then that makes it even more powerful.</p>
+<p>Emacs has above property and in fact is itself one of best tool known for its flexibility and easy customization. Emacs provides basic commands and key configuration for editing a text. This commands and key-configuration are editable and extensible.</p>
+<p>Beside basic configuration, Emacs is not biased towards any specific language for customization. One can customize Emacs for any programming language or extend easily existing customization.</p>
+<p>Emacs provides the consistent environment for multiple programming languages, email, organizer (via org-mode), a shell/interpreter, note taking, and document writing.</p>
+<p>For customizing you don’t need to learn Emacs-lisp from scratch. You can use existing packages available and that’s it. Installing and managing packages in Emacs is easy, Emacs has in-built package manager for it.</p>
+<p>Customization is very portable, one just need to place a file or directory containing personal customization file(s) in the right place and it’s done for getting personal customization to new place.</p>
+<h2 id="huge-platform-support">Huge platform Support</h2>
+<p>Emacs supports Lisp, Ruby, Python, PHP, Java, Erlang, JavaScript, C, C++, Prolog, Tcl, AWK, PostScript, Clojure, Scala, Perl, Haskell,
+Elixir all of these languages and more like mysql, pgsql etc. Because of the powerful Lisp core, Emacs is easy to extend to add support for
+new languages if need to.</p>
+<p>Also one can use the built-in IRC client ERC along with BitlBee to connect to your favorite chat services, or use the Jabber package to hop on any XMPP service.</p>
+<h2 id="org-mode">Org-mode</h2>
+<p>No matter if you are programmer or not. Org mode is for everyone.
+Org mode lets you to plan projects and organize schedule. It can be also use for publish notes and documents to different formats, like LaTeX-&gt;pdf, html, and markdown.</p>
+<p>In fact, Org-mode is so awesome enough that many non-Emacs users started learn Emacs.</p>
+<h2 id="final-note">Final note</h2>
+<p>There are number of reason to argue that Emacs is cool and awesome to use. But I just wanted you to give glimpse of why to try Emacs. In the upcoming post I will be writing step by step information to customize Emacs from scratch to awesome IDE.</p>
+<p>Thank you!</p>
+<p>Please don’t forget to comment your thoughts and suggestions below.</p>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>

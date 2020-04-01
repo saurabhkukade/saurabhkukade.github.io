@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Jane Doe ">
+<meta name="description" content="Introduction To World Of Lambdas. Lambda expression is appearing in every other programming language and gaining a popularity amongs the developers. So what is the lambda expression? Why should we use it? Is it just anonymous function? what powers does it gives to programmer? Lets discuss all this in details in this series of posts.
+In this post, we will see the brief introduction to lambda expressions and how to express them in programming language independent way." />
+<meta name="keywords" content=", lambda" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#252627" />
+<link rel="canonical" href="https://saurabhkukade.github.io/2018/05/22/the-world-lambdas-introduction/" />
+
+
+    <title>
+        
+            The World of Lambdas :: SAURABH KUKADE  — Hello Friend NG Theme
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://saurabhkukade.github.io/main.min.84ed5579024525d4b50458514d1a43e40dd5272df45c7cd6da85b225af457154.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://saurabhkukade.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://saurabhkukade.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://saurabhkukade.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://saurabhkukade.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://saurabhkukade.github.io/safari-pinned-tab.svg" color="#252627">
+    <link rel="shortcut icon" href="https://saurabhkukade.github.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#252627">
+    <meta name="theme-color" content="#252627">
+
+<meta itemprop="name" content="The World of Lambdas">
+<meta itemprop="description" content="Introduction To World Of Lambdas. Lambda expression is appearing in every other programming language and gaining a popularity amongs the developers. So what is the lambda expression? Why should we use it? Is it just anonymous function? what powers does it gives to programmer? Lets discuss all this in details in this series of posts.
+In this post, we will see the brief introduction to lambda expressions and how to express them in programming language independent way.">
+<meta itemprop="datePublished" content="2018-05-22T16:55:25&#43;05:30" />
+<meta itemprop="dateModified" content="2018-05-22T16:55:25&#43;05:30" />
+<meta itemprop="wordCount" content="630">
+<meta itemprop="image" content="https://saurabhkukade.github.io"/>
+
+
+
+<meta itemprop="keywords" content="lambda," /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://saurabhkukade.github.io"/>
+
+<meta name="twitter:title" content="The World of Lambdas"/>
+<meta name="twitter:description" content="Introduction To World Of Lambdas. Lambda expression is appearing in every other programming language and gaining a popularity amongs the developers. So what is the lambda expression? Why should we use it? Is it just anonymous function? what powers does it gives to programmer? Lets discuss all this in details in this series of posts.
+In this post, we will see the brief introduction to lambda expressions and how to express them in programming language independent way."/>
+
+
+
+
+
+    <meta property="article:published_time" content="2018-05-22 16:55:25 &#43;0530 IST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://saurabhkukade.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://saurabhkukade.github.io/about/">About</a></li><li><a href="https://saurabhkukade.github.io/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>3 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title">
+                <a href="https://saurabhkukade.github.io/2018/05/22/the-world-lambdas-introduction/">The World of Lambdas</a>
+            </h1>
+
+            
+
+            <div class="post-content">
+                <h1 id="introduction-to-world-of-lambdasa-idsec-1-namesec-1a">Introduction To World Of Lambdas.<!-- raw HTML omitted --><!-- raw HTML omitted --></h1>
+<p>Lambda expression is appearing in every other programming language and gaining a popularity
+amongs the developers. So what is the lambda expression? Why should we use it? Is it just anonymous
+function? what powers does it gives to programmer? Lets discuss all this in details in this series
+of posts.</p>
+<p>In this post, we will see the brief introduction to lambda expressions and how to express them in
+programming language independent way.</p>
+<h2 id="introductiona-idsec-1-1-namesec-1-1a">Introduction<!-- raw HTML omitted --><!-- raw HTML omitted --></h2>
+<p>Lambda expressions or if I say lambda functions are anonymous functions with no names.
+They only accept one input variable, with certain operations used to implement a function
+with several variables.</p>
+<p>Lambda expressions are powerfull because we can create a higher order function using them.
+Here by higher order function I mean a function which can accept a another function as
+argument or return a function as output.</p>
+<p>But to able to able to create and use lambda expressions in meaningfull manner we should know
+the “Lambda Calculus”.</p>
+<p>Lambda Caluclus is a language of lambda terms(expressions) which is defined by certain formal
+syntax and set of transformation rules, which manipulate the lambda terms.</p>
+<h2 id="historya-idsec-1-2-namesec-1-2a">History<!-- raw HTML omitted --><!-- raw HTML omitted --></h2>
+<ul>
+<li>Lambda calculus was first introduced by mathematician Alonzo Church in 1930s as part of his
+research.</li>
+<li>Lambda calculus is a universal model of computation that can be simulated by any Turing Machine.</li>
+</ul>
+<h2 id="basics-of-lambda-calculusa-idsec-1-3-namesec-1-3a">Basics of Lambda Calculus<!-- raw HTML omitted --><!-- raw HTML omitted --></h2>
+<p>To be able to understand the power of lambda, we must know the basics of it so that we will be
+a able to form lambda expressions by our own to use in any of our favourite programming language.</p>
+<h3 id="expressing-lambda-termsa-idsec-1-3-1-namesec-1-3-1a">Expressing Lambda Terms<!-- raw HTML omitted --><!-- raw HTML omitted --></h3>
+<p>Lets see how to express lambda terms in programming language independent form.
+There are three forms of lambda terms.</p>
+<ol>
+<li>Variable</li>
+<li>Abstraction</li>
+<li>Application</li>
+</ol>
+<p>Lets discuss each them in brief.</p>
+<ol>
+<li>
+<p>Variable</p>
+<p>Variable can be a character or String representing a parameter or mathematical(numerical)/logical
+value.
+Example: X, 1, var, True, False</p>
+<pre><code>x
+
+1
+
+True
+
+False
+</code></pre>
+</li>
+<li>
+<p>Abstraction</p>
+<p>Abstraction is function defination. It can be thought as just constructing any other function with
+arguments.
+Example: To construct a increment function which accepts one parameter and returns adding one to it.</p>
+<pre><code>(λx.x + 1)
+</code></pre>
+<p>In above expression, before the (.) dot “λx” is where we are declaring an anonymous function with
+parameter ‘x’ and after the (.) dot “x+1” is a function body where are writing a logic of a function.</p>
+<p>Please note that &lsquo;+&rsquo; operator used in above expression and below one also is not a lambda term. But I am using it
+just for intuition. It can be think of as another lambda abstraction for plus operation.</p>
+<p>Another example of addtion of two numbers can be constructed as:</p>
+<pre><code>(λxy.x + y)
+</code></pre>
+</li>
+<li>
+<p>Applicattion</p>
+<p>Application is applying one function to an argument. Where argument is another lambda term.
+Example:</p>
+<pre><code>(λx.x+1)(2)
+</code></pre>
+<p>In above expression we are applying a variable(lambda term) “2” to another lambda term “λx.x + 1”
+which is a lambda Abstraction.</p>
+<p>So this is how we construct lambda expressions in three forms. Variable, Abstraction, Application.
+To summurise the inductive defination of lambda expressions with three rules which can be use to
+construct valid lambda terms:</p>
+<ol>
+<li>A variable, x, is itself a valid lambda term</li>
+<li>If ‘t’ is a lambda term, and ‘x’ is a variable, then &ldquo;(λx.t)&rdquo; is a lambda term (called a lambda abstraction);</li>
+<li>if ‘t’ and ‘s’ are lambda terms, &ldquo;(ts)&rdquo; is a lambda term (called an application).</li>
+</ol>
+</li>
+</ol>
+<h2 id="final-notea-idsec-1-4-namesec-1-4a">Final Note<!-- raw HTML omitted --><!-- raw HTML omitted --></h2>
+<p>This was just introduction to lambda calculus to give you an idea what lambda expressions are and
+how to construct valid lambda expressions. In the next post we will discuss about free and bound
+variables and evaluating a lambda terms with alpha-conversion and beta-reduction.</p>
+<p>Please comment below for any queries, suggestions and also if you find any mistake in above post.
+Thank You!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://saurabhkukade.github.io/tags/lambda">lambda</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>630 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2018-05-22 16:55 &#43;0530</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h"></span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+                        <span class="button previous">
+                            <a href="https://saurabhkukade.github.io/2018/10/26/python-a-better-scripting-language/">
+                                <span class="button__icon">←</span>
+                                <span class="button__text">Python - A Better Scripting Language.</span>
+                            </a>
+                        </span>
+                    
+
+                    
+                        <span class="button next">
+                            <a href="https://saurabhkukade.github.io/2019/06/04/why-emacs/">
+                                <span class="button__text">Why Emacs</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    
+                </div>
+            </div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            
+                <span><a href="https://saurabhkukade.github.io">Jane Doe</a></span>
+            
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span> <a href="https://saurabhkukade.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://saurabhkukade.github.io/bundle.min.2d5469329143160ae2456a69c3c76dc2d0a3b212b46afe291a51bd68650ed6f8697e001dab54f1c272c77ce08092a8c55e5bb4314e0ee334aab4b927ec896638.js" integrity="sha512-LVRpMpFDFgriRWppw8dtwtCjshK0av4pGlG9aGUO1vhpfgAdq1TxwnLHfOCAkqjFXlu0MU4O4zSqtLkn7IlmOA=="></script>
+
+
+
+    </body>
+</html>

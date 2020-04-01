@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>emacs on SAURABH KUKADE</title>
+    <link>https://saurabhkukade.github.io/tags/emacs/</link>
+    <description>Recent content in emacs on SAURABH KUKADE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Mon, 12 Jun 2017 16:55:25 +0530</lastBuildDate>
+    
+	<atom:link href="https://saurabhkukade.github.io/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Why Emacs</title>
+      <link>https://saurabhkukade.github.io/2019/06/04/why-emacs/</link>
+      <pubDate>Mon, 12 Jun 2017 16:55:25 +0530</pubDate>
+      
+      <guid>https://saurabhkukade.github.io/2019/06/04/why-emacs/</guid>
+      <description>&amp;ldquo;Emacs outshines all other editing software in approximately the same way that the noonday sun does the stars. It is not just bigger and brighter; it simply makes everything else vanish.”
+  -Neal Stephenson, “In the Beginning was the Command Line”
+ Introduction This is my first blog post about Emacs. I want to discuss step by step customization of Emacs for beginner. If you’re new to Emacs then you are in the right place, if you’re already familiar with Emacs then that is even better, I assure you that we will get to know many new things in here.</description>
+    </item>
+    
+  </channel>
+</rss>

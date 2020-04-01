@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Jane Doe ">
+<meta name="description" content="“Science is what we understand well enough to explain to a computer. Art is everything else we do.” — Donald Knuth
+ Recently I was having this conversation with my colleague that why Erlang has good support for concurrency and why it should be use for building distributed systems.
+I would like to share my findings on this topic in this article. This article is just a high level overview of philosophy of Erlang hence it contains no code example." />
+<meta name="keywords" content=", Erlang" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#252627" />
+<link rel="canonical" href="https://saurabhkukade.github.io/2019/12/13/erlang-is-not-just-a-language-it-is-a-philosophy/" />
+
+
+    <title>
+        
+            Erlang is not just a language, it is a philosophy :: SAURABH KUKADE  — Hello Friend NG Theme
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://saurabhkukade.github.io/main.min.84ed5579024525d4b50458514d1a43e40dd5272df45c7cd6da85b225af457154.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://saurabhkukade.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://saurabhkukade.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://saurabhkukade.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://saurabhkukade.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://saurabhkukade.github.io/safari-pinned-tab.svg" color="#252627">
+    <link rel="shortcut icon" href="https://saurabhkukade.github.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#252627">
+    <meta name="theme-color" content="#252627">
+
+<meta itemprop="name" content="Erlang is not just a language, it is a philosophy">
+<meta itemprop="description" content="“Science is what we understand well enough to explain to a computer. Art is everything else we do.” — Donald Knuth
+ Recently I was having this conversation with my colleague that why Erlang has good support for concurrency and why it should be use for building distributed systems.
+I would like to share my findings on this topic in this article. This article is just a high level overview of philosophy of Erlang hence it contains no code example.">
+<meta itemprop="datePublished" content="2019-12-13T16:55:25&#43;05:30" />
+<meta itemprop="dateModified" content="2019-12-13T16:55:25&#43;05:30" />
+<meta itemprop="wordCount" content="942">
+<meta itemprop="image" content="https://saurabhkukade.github.io"/>
+
+
+
+<meta itemprop="keywords" content="Erlang," /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://saurabhkukade.github.io"/>
+
+<meta name="twitter:title" content="Erlang is not just a language, it is a philosophy"/>
+<meta name="twitter:description" content="“Science is what we understand well enough to explain to a computer. Art is everything else we do.” — Donald Knuth
+ Recently I was having this conversation with my colleague that why Erlang has good support for concurrency and why it should be use for building distributed systems.
+I would like to share my findings on this topic in this article. This article is just a high level overview of philosophy of Erlang hence it contains no code example."/>
+
+
+
+
+
+    <meta property="article:published_time" content="2019-12-13 16:55:25 &#43;0530 IST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://saurabhkukade.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://saurabhkukade.github.io/about/">About</a></li><li><a href="https://saurabhkukade.github.io/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>5 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title">
+                <a href="https://saurabhkukade.github.io/2019/12/13/erlang-is-not-just-a-language-it-is-a-philosophy/">Erlang is not just a language, it is a philosophy</a>
+            </h1>
+
+            
+
+            <div class="post-content">
+                <blockquote>
+<p>“Science is what we understand well enough to explain to a computer. Art is everything else we do.” — Donald Knuth</p>
+</blockquote>
+<p>Recently I was having this conversation with my colleague that why Erlang has good support for concurrency and why it should be use
+for building distributed systems.</p>
+<p>I would like to share my findings on this topic in this article.
+This article is just a high level overview of philosophy of Erlang hence it contains no code example.</p>
+<h2 id="the-problem">The Problem</h2>
+<p>No description of a software is complete without describing the type of problem that is supposed to be solved using the software. Every software piece ever made till date is to solve some specific problem. Erlang is no exception!
+Erlang was originally designed to build telecom switching systems. To understand philosophy of Erlang we must understand the what are requirements for the properties of a telecom system.</p>
+<h3 id="the-requirements">The requirements:</h3>
+<ol>
+<li>System must be able to handle very large number of concurrent activities</li>
+<li>Action must be completed in certain time. It is strictly time bounded.</li>
+<li>System must be distributed over several computers.</li>
+<li>The system should be in continuous operation for many years.</li>
+<li>Reconfiguration should be performed without stopping the system.</li>
+<li>They have strict requirements of quality and reliability.</li>
+<li>System must be fault tolerant.</li>
+<li>Telecom system expect to run FOREVER!</li>
+</ol>
+<p>So to meet all this above requirements a programming language and underlying system (on which code will run) must provide and support
+this following features:</p>
+<ol>
+<li>High support for concurrency</li>
+<li>Real-time actions. (Actions must be completed in specific time)</li>
+<li>System should easily scale from single to multi-node distributed system.</li>
+<li>Continuous operation and in-place up-gradation. Software upgrade must be performed “in-place” i.e. without stopping system.</li>
+</ol>
+<p>So the ultimate problem which Erlang supposed to solve is “how to make reliable distributed systems in the presence of software errors”.</p>
+<p>Conventional programming languages do not solve this problem because they do not allow different software modules to co-exist in such a way that there is no interference between modules.</p>
+<p>The commonly used threads model of programming, where resources are shared, makes it extremely difficult to isolate components from each other so that errors in one component can propagate to another component and damage the internal consistency of the system.</p>
+<p>So how Erlang is different than this conventional programming languages? Well Erlang belongs to the family of pure message passing languages. It is a concurrent process-based language having strong isolation between concurrent processes.</p>
+<h2 id="the-philosophy">The Philosophy</h2>
+<p>Having said that, lets see some important principals from philosophy of Erlang which make it suitable for solving this problem.</p>
+<ul>
+<li>
+<h4 id="everything-is-a-process">Everything is a process.</h4>
+</li>
+</ul>
+<p>In context of Erlang a process can be thought of as a self-contained virtual machine. Each process must be identified by a unique unforgettable identifier. Pid of the process.</p>
+<p>If you know the Pid of a process only then you can send a message to the process. Process creation and destruction is a lightweight operation so that system should scale easily</p>
+<ul>
+<li>
+<h4 id="processes-are-strongly-isolated">Processes are strongly isolated</h4>
+</li>
+</ul>
+<p>Two processes operating on the same machine must be as independent as if they ran on physically separated machines.</p>
+<p>Processes have “share nothing” semantics. This is obvious since they are imagined to run on physically separated machines.</p>
+<p>Hence there is no shared data or shared resource between two processes then obvious problems of concurrency due to sharing are automatically avoided.</p>
+<ul>
+<li>
+<h4 id="message-passing-is-the-only-way-for-processes-to-interact">Message passing is the only way for processes to interact</h4>
+</li>
+</ul>
+<p>Message passing is the only way to pass data between processes. Again since nothing is shared this is the only means possible to exchange data.</p>
+<p>Process isolation implies that message passing is asynchronous.</p>
+<p>If it is synchronous then error in receiver of message could block indefinitely sender of message destroying the property of isolation.</p>
+<p>Message passing is assumed to be atomic which means that a message is either delivered in its entirety or not at all.</p>
+<ul>
+<li>
+<h4 id="let-it-crash">Let it crash</h4>
+</li>
+</ul>
+<p>If error occurs withing a process then rather than trying to actively prevent it, you let it crash, and put in place a policy that allows it to immediately restart and recover on a clean slate.</p>
+<ul>
+<li>
+<h4 id="error-handling-is-non-local">Error handling is non-local</h4>
+</li>
+</ul>
+<p>That means a process won’t do its own error handling.</p>
+<p>Erlang has “fail-fast” philosophy that means processes do what they are supposed to do or fail. i.e. Process must obey single responsibility principle.</p>
+<p>It should be possible for one process to detect failure in another process and we should also know the reason for failure.</p>
+<p>There should be another separate process to do error handling of other process. Again single responsibility principle.</p>
+<p>This philosophy of Erlang makes system highly concurrent, reliable, scalable and fault tolerant.</p>
+<h2 id="the-real-world-use">The Real World Use</h2>
+<p>So who uses Erlang? Does it deliver its promise to make reliable distributed systems in the presence of software errors?</p>
+<p>Well one of the leading messaging app company ‘WhatsApp’ uses Erlang for its communication module. They adopted Erlang cause they had strong requirement of concurrency, scalability, real-time actions and fault tolerant
+system. Whatsapp handles over 65 billion messages every day while providing reliable service to its users.</p>
+<p>So from this example I can say Yes! Erlang does deliver its promise.</p>
+<p>Other companies also use Erlang, one of the largest user of Erlang is Ericsson. Ericsson use it to write software used in telecommunications systems.</p>
+<h2 id="final-note">Final Note</h2>
+<p>They say code is obsolete ideas are not. Whether to you use Erlang may vary on various parameters, but philosophy behind it very generic and can be applied to solve real world problems in distributed computing. Hence Erlang is not just a language, it is a philosophy.</p>
+<p>I hope that this article has helped you is some way. Criticism is always welcome!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://saurabhkukade.github.io/tags/erlang">Erlang</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>942 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-12-13 16:55 &#43;0530</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h"></span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+
+                    
+                        <span class="button next">
+                            <a href="https://saurabhkukade.github.io/2019/10/14/meta-programming-in-python/">
+                                <span class="button__text">Meta-programming In Python</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    
+                </div>
+            </div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            
+                <span><a href="https://saurabhkukade.github.io">Jane Doe</a></span>
+            
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span> <a href="https://saurabhkukade.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://saurabhkukade.github.io/bundle.min.2d5469329143160ae2456a69c3c76dc2d0a3b212b46afe291a51bd68650ed6f8697e001dab54f1c272c77ce08092a8c55e5bb4314e0ee334aab4b927ec896638.js" integrity="sha512-LVRpMpFDFgriRWppw8dtwtCjshK0av4pGlG9aGUO1vhpfgAdq1TxwnLHfOCAkqjFXlu0MU4O4zSqtLkn7IlmOA=="></script>
+
+
+
+    </body>
+</html>

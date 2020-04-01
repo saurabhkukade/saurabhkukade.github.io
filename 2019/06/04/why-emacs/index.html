@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Jane Doe ">
+<meta name="description" content="&amp;ldquo;Emacs outshines all other editing software in approximately the same way that the noonday sun does the stars. It is not just bigger and brighter; it simply makes everything else vanish.”
+  -Neal Stephenson, “In the Beginning was the Command Line”
+ Introduction This is my first blog post about Emacs. I want to discuss step by step customization of Emacs for beginner. If you’re new to Emacs then you are in the right place, if you’re already familiar with Emacs then that is even better, I assure you that we will get to know many new things in here." />
+<meta name="keywords" content=", emacs" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#252627" />
+<link rel="canonical" href="https://saurabhkukade.github.io/2019/06/04/why-emacs/" />
+
+
+    <title>
+        
+            Why Emacs :: SAURABH KUKADE  — Hello Friend NG Theme
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://saurabhkukade.github.io/main.min.84ed5579024525d4b50458514d1a43e40dd5272df45c7cd6da85b225af457154.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://saurabhkukade.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://saurabhkukade.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://saurabhkukade.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://saurabhkukade.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://saurabhkukade.github.io/safari-pinned-tab.svg" color="#252627">
+    <link rel="shortcut icon" href="https://saurabhkukade.github.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#252627">
+    <meta name="theme-color" content="#252627">
+
+<meta itemprop="name" content="Why Emacs">
+<meta itemprop="description" content="&ldquo;Emacs outshines all other editing software in approximately the same way that the noonday sun does the stars. It is not just bigger and brighter; it simply makes everything else vanish.”
+  -Neal Stephenson, “In the Beginning was the Command Line”
+ Introduction This is my first blog post about Emacs. I want to discuss step by step customization of Emacs for beginner. If you’re new to Emacs then you are in the right place, if you’re already familiar with Emacs then that is even better, I assure you that we will get to know many new things in here.">
+<meta itemprop="datePublished" content="2017-06-12T16:55:25&#43;05:30" />
+<meta itemprop="dateModified" content="2017-06-12T16:55:25&#43;05:30" />
+<meta itemprop="wordCount" content="753">
+<meta itemprop="image" content="https://saurabhkukade.github.io"/>
+
+
+
+<meta itemprop="keywords" content="emacs," /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://saurabhkukade.github.io"/>
+
+<meta name="twitter:title" content="Why Emacs"/>
+<meta name="twitter:description" content="&ldquo;Emacs outshines all other editing software in approximately the same way that the noonday sun does the stars. It is not just bigger and brighter; it simply makes everything else vanish.”
+  -Neal Stephenson, “In the Beginning was the Command Line”
+ Introduction This is my first blog post about Emacs. I want to discuss step by step customization of Emacs for beginner. If you’re new to Emacs then you are in the right place, if you’re already familiar with Emacs then that is even better, I assure you that we will get to know many new things in here."/>
+
+
+
+
+
+    <meta property="article:published_time" content="2017-06-12 16:55:25 &#43;0530 IST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://saurabhkukade.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://saurabhkukade.github.io/about/">About</a></li><li><a href="https://saurabhkukade.github.io/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>4 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title">
+                <a href="https://saurabhkukade.github.io/2019/06/04/why-emacs/">Why Emacs</a>
+            </h1>
+
+            
+
+            <div class="post-content">
+                <p><img src="../img/emacs.jpeg" alt="Image of Emacs"></p>
+<blockquote>
+<p>&ldquo;Emacs outshines all other editing software in approximately the same way that the noonday sun does the stars. It is not just bigger and brighter; it simply makes everything else vanish.”</p>
+</blockquote>
+<blockquote>
+<p>-Neal Stephenson, “In the Beginning was the Command Line”</p>
+</blockquote>
+<h2 id="introduction">Introduction</h2>
+<p>This is my first blog post about Emacs. I want to discuss step by step customization of Emacs for beginner. If you’re new to Emacs then you are in the right place, if you’re already familiar with Emacs then that is even better, I assure you that we will get to know many new things in here.</p>
+<p>Before getting into how to customize Emacs and what are the exciting features of Emacs I want to write about “why Emacs”.</p>
+<h2 id="why-emacs">Why Emacs?</h2>
+<p>This was first question crossed my mind when one wise man asked me to try Emacs instead of VIM. Well, I am not writing this article to discuss a battle between two editors VIM and Emacs. That is a another story for another day. But Why Emacs? Well here are some things that justifies that Emacs is powerful and highly customizable.</p>
+<h2 id="41-years">41 Years!</h2>
+<p>Initial release year of Emacs is 1976 that means Emacs is standing and adapting changes from last 41 years.</p>
+<p>41 years of time for a software is huge and that makes Emacs is one of the best Software Engineering product.</p>
+<h2 id="lisp-emacs-lisp">Lisp (Emacs Lisp)</h2>
+<p>If you are lisp programmer (lisper) then I don’t need to explain you. But for those who don’t know Lisp and its dialects like Scheme, Clojure then
+Lisp (and all dialects of Lips) is powerful programming language and it stands different from other languages because of its unique property of “Homoiconicity”.</p>
+<p>As Emacs is implemented in C and Emacs Lisp (Emacs Lisp is a dialect of the Lisp programming language) it makes Emacs what is because,</p>
+<ul>
+<li>
+<p>The simple syntax of Lisp, together with the powerful editing features made possible by that simple syntax, add up to a more convenient programming system than is practical with other languages. Lisp and extensible editors are made for each other.</p>
+</li>
+<li>
+<p>The simplicity of Lisp syntax makes intelligent editing operations easier to implement, while the complexity of other languages discourages their users from implementing similar operations for them.</p>
+</li>
+</ul>
+<h2 id="highly-customizable">Highly Customizable</h2>
+<p>To any programmer, tools gives power and convenience for reading, writing and managing a code.</p>
+<p>Hence, if a tool is programmatic-ally customizable then that makes it even more powerful.</p>
+<p>Emacs has above property and in fact is itself one of best tool known for its flexibility and easy customization. Emacs provides basic commands and key configuration for editing a text. This commands and key-configuration are editable and extensible.</p>
+<p>Beside basic configuration, Emacs is not biased towards any specific language for customization. One can customize Emacs for any programming language or extend easily existing customization.</p>
+<p>Emacs provides the consistent environment for multiple programming languages, email, organizer (via org-mode), a shell/interpreter, note taking, and document writing.</p>
+<p>For customizing you don’t need to learn Emacs-lisp from scratch. You can use existing packages available and that’s it. Installing and managing packages in Emacs is easy, Emacs has in-built package manager for it.</p>
+<p>Customization is very portable, one just need to place a file or directory containing personal customization file(s) in the right place and it’s done for getting personal customization to new place.</p>
+<h2 id="huge-platform-support">Huge platform Support</h2>
+<p>Emacs supports Lisp, Ruby, Python, PHP, Java, Erlang, JavaScript, C, C++, Prolog, Tcl, AWK, PostScript, Clojure, Scala, Perl, Haskell,
+Elixir all of these languages and more like mysql, pgsql etc. Because of the powerful Lisp core, Emacs is easy to extend to add support for
+new languages if need to.</p>
+<p>Also one can use the built-in IRC client ERC along with BitlBee to connect to your favorite chat services, or use the Jabber package to hop on any XMPP service.</p>
+<h2 id="org-mode">Org-mode</h2>
+<p>No matter if you are programmer or not. Org mode is for everyone.
+Org mode lets you to plan projects and organize schedule. It can be also use for publish notes and documents to different formats, like LaTeX-&gt;pdf, html, and markdown.</p>
+<p>In fact, Org-mode is so awesome enough that many non-Emacs users started learn Emacs.</p>
+<h2 id="final-note">Final note</h2>
+<p>There are number of reason to argue that Emacs is cool and awesome to use. But I just wanted you to give glimpse of why to try Emacs. In the upcoming post I will be writing step by step information to customize Emacs from scratch to awesome IDE.</p>
+<p>Thank you!</p>
+<p>Please don’t forget to comment your thoughts and suggestions below.</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://saurabhkukade.github.io/tags/emacs">emacs</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>753 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2017-06-12 16:55 &#43;0530</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h"></span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+                        <span class="button previous">
+                            <a href="https://saurabhkukade.github.io/2018/05/22/the-world-lambdas-introduction/">
+                                <span class="button__icon">←</span>
+                                <span class="button__text">The World of Lambdas</span>
+                            </a>
+                        </span>
+                    
+
+                    
+                </div>
+            </div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            
+                <span><a href="https://saurabhkukade.github.io">Jane Doe</a></span>
+            
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span> <a href="https://saurabhkukade.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://saurabhkukade.github.io/bundle.min.2d5469329143160ae2456a69c3c76dc2d0a3b212b46afe291a51bd68650ed6f8697e001dab54f1c272c77ce08092a8c55e5bb4314e0ee334aab4b927ec896638.js" integrity="sha512-LVRpMpFDFgriRWppw8dtwtCjshK0av4pGlG9aGUO1vhpfgAdq1TxwnLHfOCAkqjFXlu0MU4O4zSqtLkn7IlmOA=="></script>
+
+
+
+    </body>
+</html>
