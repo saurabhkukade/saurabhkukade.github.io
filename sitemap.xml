@@ -3,12 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://saurabhkukade.com/photography/</loc>
-    <lastmod>2020-04-05T14:01:49+05:30</lastmod>
+    <loc>https://saurabhkukade.com/posts/2020/07/understanding-zmap-file-format/</loc>
+    <lastmod>2020-07-10T22:01:55+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saurabhkukade.com/posts/</loc>
+    <lastmod>2020-07-10T22:01:55+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://saurabhkukade.com/</loc>
+    <lastmod>2020-07-10T22:01:55+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saurabhkukade.com/tags/</loc>
+    <lastmod>2020-07-10T22:01:55+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saurabhkukade.com/tags/zmap/</loc>
+    <lastmod>2020-07-10T22:01:55+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saurabhkukade.com/photography/</loc>
     <lastmod>2020-04-05T14:01:49+05:30</lastmod>
   </url>
   
@@ -19,16 +39,6 @@
   
   <url>
     <loc>https://saurabhkukade.com/2019/12/13/erlang-is-not-just-a-language-it-is-a-philosophy/</loc>
-    <lastmod>2019-12-13T16:55:25+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://saurabhkukade.com/posts/</loc>
-    <lastmod>2019-12-13T16:55:25+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://saurabhkukade.com/tags/</loc>
     <lastmod>2019-12-13T16:55:25+05:30</lastmod>
   </url>
   

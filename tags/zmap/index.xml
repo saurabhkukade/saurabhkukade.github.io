@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zmap on SAURABH KUKADE</title>
+    <link>https://saurabhkukade.com/tags/zmap/</link>
+    <description>Recent content in zmap on SAURABH KUKADE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 10 Jul 2020 00:00:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://saurabhkukade.com/tags/zmap/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Understanding ZMAP&#43; File Format</title>
+      <link>https://saurabhkukade.com/posts/2020/07/understanding-zmap-file-format/</link>
+      <pubDate>Fri, 10 Jul 2020 00:00:00 +0530</pubDate>
+      
+      <guid>https://saurabhkukade.com/posts/2020/07/understanding-zmap-file-format/</guid>
+      <description>In this article I want to share my findings on how to interpret the ZMAP file format.
+What exactly is ZMAP+ plus file format The ZMapPlus is an old format used to store gridded data in an ASCII line format for transport and storage. It is commonly used in applications in the Oil and Gas Exploration field&amp;rsquo;s applications read and write the format.
+It is for gridded data. The format can also support point and polygon data, but only one data type is allowed in each file.</description>
+    </item>
+    
+  </channel>
+</rss>
