@@ -115,10 +115,10 @@ I hope that this article has helped you to familiarize yourself with the ZMAP+ f
         
         <item>
             <title>Erlang is not just a language, it is a philosophy</title>
-            <link>https://saurabhkukade.com/2019/12/13/erlang-is-not-just-a-language-it-is-a-philosophy/</link>
+            <link>https://saurabhkukade.com/2019/12/13/Erlang-is-not-just-a-language,-it-is-a-philosophy/</link>
             <pubDate>Fri, 13 Dec 2019 16:55:25 +0530</pubDate>
             
-            <guid>https://saurabhkukade.com/2019/12/13/erlang-is-not-just-a-language-it-is-a-philosophy/</guid>
+            <guid>https://saurabhkukade.com/2019/12/13/Erlang-is-not-just-a-language,-it-is-a-philosophy/</guid>
             <description>“Science is what we understand well enough to explain to a computer. Art is everything else we do.” — Donald Knuth
  Recently I was having this conversation with my colleague that why Erlang has good support for concurrency and why it should be use for building distributed systems.
 I would like to share my findings on this topic in this article. This article is just a high level overview of philosophy of Erlang hence it contains no code example.</description>
@@ -211,10 +211,10 @@ system. Whatsapp handles over 65 billion messages every day while providing reli
         
         <item>
             <title>Meta-programming In Python</title>
-            <link>https://saurabhkukade.com/2019/10/14/meta-programming-in-python/</link>
+            <link>https://saurabhkukade.com/2019/10/14/Meta-programming-In-Python/</link>
             <pubDate>Mon, 14 Oct 2019 16:55:25 +0530</pubDate>
             
-            <guid>https://saurabhkukade.com/2019/10/14/meta-programming-in-python/</guid>
+            <guid>https://saurabhkukade.com/2019/10/14/Meta-programming-In-Python/</guid>
             <description>“Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away.” – Antoine de Saint-Exupery
  Recently I encountered with very fascinating concept which is &amp;ldquo;Meta-programming in Python&amp;rdquo;. I would like to share my findings about this topic in this article. I hope it may help you to wrap your head around this because they say it is tough nut to crack.</description>
             <content type="html"><![CDATA[<blockquote>
@@ -399,10 +399,10 @@ Comment as well as criticism is always welcome!</p>
         
         <item>
             <title>Python - A Better Scripting Language.</title>
-            <link>https://saurabhkukade.com/2018/10/26/python-a-better-scripting-language/</link>
+            <link>https://saurabhkukade.com/2018/10/26/Python%20-%20A%20Better%20Scripting%20Language/</link>
             <pubDate>Fri, 26 Oct 2018 16:55:25 +0530</pubDate>
             
-            <guid>https://saurabhkukade.com/2018/10/26/python-a-better-scripting-language/</guid>
+            <guid>https://saurabhkukade.com/2018/10/26/Python%20-%20A%20Better%20Scripting%20Language/</guid>
             <description>If debugging is the process of removing software bugs, then programming must be the process of putting them in. - Edsger Dijkstra
  Challenges With Scripting Irrespective of our role in software development we often work with Linux/Unix(*nix). While working with command line(CLI) on *nix we need to write shell scripts. We automate something with scripts or we do number crunching on some data using shell commands. Most of the time we already know frequently used commands else we google it.</description>
             <content type="html"><![CDATA[<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
@@ -495,10 +495,10 @@ main()
         
         <item>
             <title>The World of Lambdas</title>
-            <link>https://saurabhkukade.com/2018/05/22/the-world-lambdas-introduction/</link>
+            <link>https://saurabhkukade.com/2018/05/22/The-World-Lambdas-Introduction/</link>
             <pubDate>Tue, 22 May 2018 16:55:25 +0530</pubDate>
             
-            <guid>https://saurabhkukade.com/2018/05/22/the-world-lambdas-introduction/</guid>
+            <guid>https://saurabhkukade.com/2018/05/22/The-World-Lambdas-Introduction/</guid>
             <description>Introduction To World Of Lambdas. Lambda expression is appearing in every other programming language and gaining a popularity amongs the developers. So what is the lambda expression? Why should we use it? Is it just anonymous function? what powers does it gives to programmer? Lets discuss all this in details in this series of posts.
 In this post, we will see the brief introduction to lambda expressions and how to express them in programming language independent way.</description>
             <content type="html"><![CDATA[<h1 id="introduction-to-world-of-lambdasa-idsec-1-namesec-1a">Introduction To World Of Lambdas.<!-- raw HTML omitted --><!-- raw HTML omitted --></h1>
@@ -596,10 +596,10 @@ Thank You!</p>
         
         <item>
             <title>Why Emacs</title>
-            <link>https://saurabhkukade.com/2019/06/04/why-emacs/</link>
+            <link>https://saurabhkukade.com/2019/06/04/Why-Emacs/</link>
             <pubDate>Mon, 12 Jun 2017 16:55:25 +0530</pubDate>
             
-            <guid>https://saurabhkukade.com/2019/06/04/why-emacs/</guid>
+            <guid>https://saurabhkukade.com/2019/06/04/Why-Emacs/</guid>
             <description>&amp;ldquo;Emacs outshines all other editing software in approximately the same way that the noonday sun does the stars. It is not just bigger and brighter; it simply makes everything else vanish.”
   -Neal Stephenson, “In the Beginning was the Command Line”
  Introduction This is my first blog post about Emacs. I want to discuss step by step customization of Emacs for beginner. If you’re new to Emacs then you are in the right place, if you’re already familiar with Emacs then that is even better, I assure you that we will get to know many new things in here.</description>

@@ -8,10 +8,10 @@
     <lastBuildDate>Fri, 13 Dec 2019 16:55:25 +0530</lastBuildDate><atom:link href="https://saurabhkukade.com/tags/erlang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Erlang is not just a language, it is a philosophy</title>
-      <link>https://saurabhkukade.com/2019/12/13/erlang-is-not-just-a-language-it-is-a-philosophy/</link>
+      <link>https://saurabhkukade.com/2019/12/13/Erlang-is-not-just-a-language,-it-is-a-philosophy/</link>
       <pubDate>Fri, 13 Dec 2019 16:55:25 +0530</pubDate>
       
-      <guid>https://saurabhkukade.com/2019/12/13/erlang-is-not-just-a-language-it-is-a-philosophy/</guid>
+      <guid>https://saurabhkukade.com/2019/12/13/Erlang-is-not-just-a-language,-it-is-a-philosophy/</guid>
       <description>“Science is what we understand well enough to explain to a computer. Art is everything else we do.” — Donald Knuth
  Recently I was having this conversation with my colleague that why Erlang has good support for concurrency and why it should be use for building distributed systems.
 I would like to share my findings on this topic in this article. This article is just a high level overview of philosophy of Erlang hence it contains no code example.</description>
