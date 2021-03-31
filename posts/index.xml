@@ -55,7 +55,7 @@ function will again wait for another 1 second to execute this function by scrapp
 <h2 id="throttling">Throttling</h2>
 <h3 id="what-is-throttling">What is throttling?</h3>
 <p>Throttling is a technique in which, no matter how many times the user fires the event, the attached function will be executed only once in a given time interval, only the first fire event executed immediately.</p>
-<p>Throttling gives up control over the rate at which function is executed, with this we can optimize the performance of the app by limiting calls per interval.</p>
+<p>Throttling gives us a control over the rate at which function is executed, with this we can optimize the performance of the app by limiting calls per interval.</p>
 <h3 id="how-exactly-this-technique-behaves">How exactly this technique behaves:</h3>
 <p>Suppose we have set time interval of 3 second for throttling, once the function is called for first time it gets executed immediately and timer
 starts for 3 second, within this waiting time if function is called again then it does not get executed. Next function execution will happen

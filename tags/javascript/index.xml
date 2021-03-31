@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>javascript on SAURABH KUKADE</title>
+    <link>https://saurabhkukade.com/tags/javascript/</link>
+    <description>Recent content in javascript on SAURABH KUKADE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 31 Mar 2021 00:00:00 +0530</lastBuildDate><atom:link href="https://saurabhkukade.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Debouncing &amp; Throttling Explained</title>
+      <link>https://saurabhkukade.com/posts/2021/03/debouncing-throttling-explained/</link>
+      <pubDate>Wed, 31 Mar 2021 00:00:00 +0530</pubDate>
+      
+      <guid>https://saurabhkukade.com/posts/2021/03/debouncing-throttling-explained/</guid>
+      <description>Introduction In this article, we will discuss Debouncing and throttling techniques that can be use to optimize the performance of web app by preventing unnecessary API calls and load on the server. Both this techniques may look similar but they are not, use case scenarios of both them are very different.
+Debounce What is a debounce?
+Deboucing is technique to delay execution of invoked function for specific time duration and if the same function gets invoked again in that time duration then again delay the execution of this newly invoked function for specific time duration by scrapping the previous function call.</description>
+    </item>
+    
+  </channel>
+</rss>
