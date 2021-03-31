@@ -5,18 +5,18 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="[Saurabh Kukade]">
-<meta name="description" content="Introduction In this article, we will discuss debouncing and throttling techniques that can be use to optimize the performance of web app by preventing unnecessary API calls and load on the server. Both this techniques may look similar but they are not, use case scenarios of both them are very different.
+<meta name="description" content="Introduction In this article, we will discuss Debouncing and throttling techniques that can be use to optimize the performance of web app by preventing unnecessary API calls and load on the server. Both this techniques may look similar but they are not, use case scenarios of both them are very different.
 Debounce What is a debounce?
 Deboucing is technique to delay execution of invoked function for specific time duration and if the same function gets invoked again in that time duration then again delay the execution of this newly invoked function for specific time duration by scrapping the previous function call." />
-<meta name="keywords" content=", tag1, tag2" />
+<meta name="keywords" content=", javascript" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="#252627" />
-<link rel="canonical" href="https://saurabhkukade.com/posts/2021/03/throttling-debouncing/" />
+<link rel="canonical" href="https://saurabhkukade.com/posts/2021/03/debouncing-throttling-explained/" />
 
 
     <title>
         
-            Throttling &amp; Debouncing :: SAURABH KUKADE 
+            Debouncing &amp; Throttling Explained :: SAURABH KUKADE 
         
     </title>
 
@@ -41,23 +41,23 @@ Deboucing is technique to delay execution of invoked function for specific time 
     <meta name="msapplication-TileColor" content="#252627">
     <meta name="theme-color" content="#252627">
 
-<meta itemprop="name" content="Throttling &amp; Debouncing">
-<meta itemprop="description" content="Introduction In this article, we will discuss debouncing and throttling techniques that can be use to optimize the performance of web app by preventing unnecessary API calls and load on the server. Both this techniques may look similar but they are not, use case scenarios of both them are very different.
+<meta itemprop="name" content="Debouncing &amp; Throttling Explained">
+<meta itemprop="description" content="Introduction In this article, we will discuss Debouncing and throttling techniques that can be use to optimize the performance of web app by preventing unnecessary API calls and load on the server. Both this techniques may look similar but they are not, use case scenarios of both them are very different.
 Debounce What is a debounce?
 Deboucing is technique to delay execution of invoked function for specific time duration and if the same function gets invoked again in that time duration then again delay the execution of this newly invoked function for specific time duration by scrapping the previous function call.">
 <meta itemprop="datePublished" content="2021-03-31T00:00:00+05:30" />
-<meta itemprop="dateModified" content="2021-03-31T13:46:03+05:30" />
+<meta itemprop="dateModified" content="2021-03-31T17:40:37+05:30" />
 <meta itemprop="wordCount" content="698">
 <meta itemprop="image" content="https://saurabhkukade.com"/>
 
 
 
-<meta itemprop="keywords" content="tag1,tag2," />
+<meta itemprop="keywords" content="javascript," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://saurabhkukade.com"/>
 
-<meta name="twitter:title" content="Throttling &amp; Debouncing"/>
-<meta name="twitter:description" content="Introduction In this article, we will discuss debouncing and throttling techniques that can be use to optimize the performance of web app by preventing unnecessary API calls and load on the server. Both this techniques may look similar but they are not, use case scenarios of both them are very different.
+<meta name="twitter:title" content="Debouncing &amp; Throttling Explained"/>
+<meta name="twitter:description" content="Introduction In this article, we will discuss Debouncing and throttling techniques that can be use to optimize the performance of web app by preventing unnecessary API calls and load on the server. Both this techniques may look similar but they are not, use case scenarios of both them are very different.
 Debounce What is a debounce?
 Deboucing is technique to delay execution of invoked function for specific time duration and if the same function gets invoked again in that time duration then again delay the execution of this newly invoked function for specific time duration by scrapping the previous function call."/>
 
@@ -135,20 +135,20 @@ Deboucing is technique to delay execution of invoked function for specific time 
 
         <article>
             <h1 class="post-title">
-                <a href="https://saurabhkukade.com/posts/2021/03/throttling-debouncing/">Throttling &amp; Debouncing</a>
+                <a href="https://saurabhkukade.com/posts/2021/03/debouncing-throttling-explained/">Debouncing &amp; Throttling Explained</a>
             </h1>
 
             
 
             <div class="post-content">
                 <h2 id="introduction">Introduction</h2>
-<p>In this article, we will discuss debouncing and throttling techniques that can be use to optimize the performance of web app by preventing unnecessary API calls and load on the server.
+<p>In this article, we will discuss Debouncing and throttling techniques that can be use to optimize the performance of web app by preventing unnecessary API calls and load on the server.
 Both this techniques may look similar but they are not, use case scenarios of both them are very different.</p>
 <h2 id="debounce">Debounce</h2>
 <p>What is a debounce?</p>
 <p>Deboucing is technique to delay execution of invoked function for specific time duration and if the same function gets invoked again in that time duration then again delay the execution of this newly invoked function for specific time duration by scrapping the previous function call.</p>
 <p>In other words, execution of function is delayed until it aggregates the input to function in specified time interval to save the frequent and unnecessary server calls.
-This can be achieved by passing the actual function to debouncing function and hence we call it as the function is being debounced.</p>
+This can be achieved by passing the actual function to Debouncing function and hence we call it as the function is being debounced.</p>
 <p>Lets see the generic debouce function in plain vanilla JavaScript.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">debounce</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">invokedFunction</span>, <span style="color:#a6e22e">waitingTime</span>) =&gt; {
@@ -170,7 +170,9 @@ This can be achieved by passing the actual function to debouncing function and h
 closure on actual function and waiting time and timeoutId.</p>
 <p>This debounce function can be use as</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">debouncedFunction</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">debounce</span>(() =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Click event triggered&#34;</span>), <span style="color:#ae81ff">1000</span>)
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">debouncedFunction</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">debounce</span>(
+   () =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Click event triggered&#34;</span>), <span style="color:#ae81ff">1000</span>)
+
 window.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, <span style="color:#a6e22e">debouncedFunction</span>);
 </code></pre></div><p>Whenever user will click on the window, function attached to the event will not be executed instantly. This debounce function will wait for 1 second to listen if this
 function gets invoke again and if it does not then function will be executed after 1 second or if user clicks again within 1 second then countdown timer gets reset and debounce
@@ -185,23 +187,21 @@ starts for 3 second, within this waiting time if function is called again then i
 only after 3 second are elapsed. This is how we can control rate of function execution.</p>
 <p>But this above explanation is not complete, what if the event is fired at 2nd second and it has not been executed, so will it be execute when timer ends? Answer is Yes! function executes after the timer ends if its been called again in waiting period. The idea of throttling is to execute function once after fixed time interval.</p>
 <h3 id="throttling-implementation-in-plain-javascript">Throttling implementation in plain Javascript:</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">throttle</span> (<span style="color:#a6e22e">callback</span>, <span style="color:#a6e22e">limit</span>) {
-    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;                  <span style="color:#75715e">// Initially, we&#39;re not waiting
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> () {               <span style="color:#75715e">// We return a throttled function
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">wait</span>) {                   <span style="color:#75715e">// If we&#39;re not waiting
-</span><span style="color:#75715e"></span>	    <span style="color:#a6e22e">callback</span>.<span style="color:#a6e22e">call</span>();           <span style="color:#75715e">// Execute users function
-</span><span style="color:#75715e"></span>	    <span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;               <span style="color:#75715e">// Prevent future invocations
-</span><span style="color:#75715e"></span>	    <span style="color:#a6e22e">setTimeout</span>(<span style="color:#66d9ef">function</span> () {   <span style="color:#75715e">// After a period of time
-</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;          <span style="color:#75715e">// And allow future invocations
-</span><span style="color:#75715e"></span>	    }, <span style="color:#a6e22e">limit</span>);
-	}
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">throttle</span>(<span style="color:#a6e22e">callback</span>, <span style="color:#a6e22e">limit</span>) {
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;                 <span style="color:#75715e">// Initially, we&#39;re not waiting
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> () {              <span style="color:#75715e">// We return a throttled function
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">wait</span>) {                    <span style="color:#75715e">// If we&#39;re not waiting
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">callback</span>.<span style="color:#a6e22e">call</span>();              <span style="color:#75715e">// Execute users function
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;                  <span style="color:#75715e">// Prevent future invocations
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">setTimeout</span>(<span style="color:#66d9ef">function</span> () {      <span style="color:#75715e">// After a period of time
+</span><span style="color:#75715e"></span>	      <span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;               <span style="color:#75715e">// And allow future invocations
+</span><span style="color:#75715e"></span>      }, <span style="color:#a6e22e">limit</span>);
     }
+  };
 }
 </code></pre></div><h2 id="conclusion">Conclusion</h2>
-<pre><code>Debouncing and Throttling are just concepts or techniques can be use for solving specific set of problems, hence they are not provided by JavaScript itself. I am not giving here use case scenarios because I do not wish to limit one's thinking to just finite set of use cases. This
-</code></pre>
-<p>concepts are abstract and can be use to solve problems from various domains.</p>
+<p>Debouncing and Throttling are just concepts or techniques can be use for solving specific set of problems, hence they are not provided by JavaScript itself. I am not giving here use case scenarios because I do not wish to limit one&rsquo;s thinking to just finite set of use cases. This
+concepts are abstract and can be use to solve problems from various domains.</p>
 <p>Intention of writing this article was give you more clearer explanations of this two techniques, for which I struggled a lot to wrap my head around. Criticism is always welcome!</p>
 
             </div>
@@ -211,7 +211,7 @@ only after 3 second are elapsed. This is how we can control rate of function exe
 
         <div class="post-info">
                 <p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://saurabhkukade.com/tags/tag1">tag1</a></span><span class="tag"><a href="https://saurabhkukade.com/tags/tag2">tag2</a></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://saurabhkukade.com/tags/javascript">javascript</a></span>
                 </p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>698 Words</p>
