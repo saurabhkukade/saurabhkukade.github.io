@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="[Saurabh Kukade]">
+<meta name="description" content="Introduction In this article, we will discuss debouncing and throttling techniques that can be use to optimize the performance of web app by preventing unnecessary API calls and load on the server. Both this techniques may look similar but they are not, use case scenarios of both them are very different.
+Debounce What is a debounce?
+Deboucing is technique to delay execution of invoked function for specific time duration and if the same function gets invoked again in that time duration then again delay the execution of this newly invoked function for specific time duration by scrapping the previous function call." />
+<meta name="keywords" content=", tag1, tag2" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#252627" />
+<link rel="canonical" href="https://saurabhkukade.com/posts/2021/03/throttling-debouncing/" />
+
+
+    <title>
+        
+            Throttling &amp; Debouncing :: SAURABH KUKADE 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://saurabhkukade.com/main.min.dcc36a099379c678c3d10e64681a1e3fdcfbbe48ad337afa070c0ae4eed36e22.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://saurabhkukade.com/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://saurabhkukade.com/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://saurabhkukade.com/favicon-16x16.png">
+    <link rel="manifest" href="https://saurabhkukade.com/site.webmanifest">
+    <link rel="mask-icon" href="https://saurabhkukade.com/safari-pinned-tab.svg" color="#252627">
+    <link rel="shortcut icon" href="https://saurabhkukade.com/favicon.ico">
+    <meta name="msapplication-TileColor" content="#252627">
+    <meta name="theme-color" content="#252627">
+
+<meta itemprop="name" content="Throttling &amp; Debouncing">
+<meta itemprop="description" content="Introduction In this article, we will discuss debouncing and throttling techniques that can be use to optimize the performance of web app by preventing unnecessary API calls and load on the server. Both this techniques may look similar but they are not, use case scenarios of both them are very different.
+Debounce What is a debounce?
+Deboucing is technique to delay execution of invoked function for specific time duration and if the same function gets invoked again in that time duration then again delay the execution of this newly invoked function for specific time duration by scrapping the previous function call.">
+<meta itemprop="datePublished" content="2021-03-31T00:00:00+05:30" />
+<meta itemprop="dateModified" content="2021-03-31T13:46:03+05:30" />
+<meta itemprop="wordCount" content="698">
+<meta itemprop="image" content="https://saurabhkukade.com"/>
+
+
+
+<meta itemprop="keywords" content="tag1,tag2," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://saurabhkukade.com"/>
+
+<meta name="twitter:title" content="Throttling &amp; Debouncing"/>
+<meta name="twitter:description" content="Introduction In this article, we will discuss debouncing and throttling techniques that can be use to optimize the performance of web app by preventing unnecessary API calls and load on the server. Both this techniques may look similar but they are not, use case scenarios of both them are very different.
+Debounce What is a debounce?
+Deboucing is technique to delay execution of invoked function for specific time duration and if the same function gets invoked again in that time duration then again delay the execution of this newly invoked function for specific time duration by scrapping the previous function call."/>
+
+
+
+
+
+    <meta property="article:published_time" content="2021-03-31 00:00:00 &#43;0530 IST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://saurabhkukade.com/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://saurabhkukade.com/posts/">Posts</a></li><li><a href="https://saurabhkukade.com/about/">About Me</a></li><li><a href="https://saurabhkukade.com/photography/">Photography</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>4 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title">
+                <a href="https://saurabhkukade.com/posts/2021/03/throttling-debouncing/">Throttling &amp; Debouncing</a>
+            </h1>
+
+            
+
+            <div class="post-content">
+                <h2 id="introduction">Introduction</h2>
+<p>In this article, we will discuss debouncing and throttling techniques that can be use to optimize the performance of web app by preventing unnecessary API calls and load on the server.
+Both this techniques may look similar but they are not, use case scenarios of both them are very different.</p>
+<h2 id="debounce">Debounce</h2>
+<p>What is a debounce?</p>
+<p>Deboucing is technique to delay execution of invoked function for specific time duration and if the same function gets invoked again in that time duration then again delay the execution of this newly invoked function for specific time duration by scrapping the previous function call.</p>
+<p>In other words, execution of function is delayed until it aggregates the input to function in specified time interval to save the frequent and unnecessary server calls.
+This can be achieved by passing the actual function to debouncing function and hence we call it as the function is being debounced.</p>
+<p>Lets see the generic debouce function in plain vanilla JavaScript.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">debounce</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">invokedFunction</span>, <span style="color:#a6e22e">waitingTime</span>) =&gt; {
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">timeoutId</span>;
+
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">executedFunction</span>(...<span style="color:#a6e22e">args</span>) {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">later</span> <span style="color:#f92672">=</span> () =&gt; {
+      <span style="color:#a6e22e">clearTimeout</span>(<span style="color:#a6e22e">timeoutId</span>);
+      <span style="color:#a6e22e">invokedFunction</span>(...<span style="color:#a6e22e">args</span>);
+    };
+
+    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">timeoutId</span>){
+      <span style="color:#a6e22e">clearTimeout</span>(<span style="color:#a6e22e">timeoutId</span>);
+    }
+    <span style="color:#a6e22e">timeoutId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">later</span>, <span style="color:#a6e22e">waitingTime</span>);
+  };
+};
+</code></pre></div><p>Now here `debounce` is a higher order function which is taking an actual function and waiting time and returning a another function. This is done to have
+closure on actual function and waiting time and timeoutId.</p>
+<p>This debounce function can be use as</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">debouncedFunction</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">debounce</span>(() =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Click event triggered&#34;</span>), <span style="color:#ae81ff">1000</span>)
+window.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, <span style="color:#a6e22e">debouncedFunction</span>);
+</code></pre></div><p>Whenever user will click on the window, function attached to the event will not be executed instantly. This debounce function will wait for 1 second to listen if this
+function gets invoke again and if it does not then function will be executed after 1 second or if user clicks again within 1 second then countdown timer gets reset and debounce
+function will again wait for another 1 second to execute this function by scrapping the previous function call by using clearTimeout function with help of timeoutId of previous function.</p>
+<h2 id="throttling">Throttling</h2>
+<h3 id="what-is-throttling">What is throttling?</h3>
+<p>Throttling is a technique in which, no matter how many times the user fires the event, the attached function will be executed only once in a given time interval, only the first fire event executed immediately.</p>
+<p>Throttling gives up control over the rate at which function is executed, with this we can optimize the performance of the app by limiting calls per interval.</p>
+<h3 id="how-exactly-this-technique-behaves">How exactly this technique behaves:</h3>
+<p>Suppose we have set time interval of 3 second for throttling, once the function is called for first time it gets executed immediately and timer
+starts for 3 second, within this waiting time if function is called again then it does not get executed. Next function execution will happen
+only after 3 second are elapsed. This is how we can control rate of function execution.</p>
+<p>But this above explanation is not complete, what if the event is fired at 2nd second and it has not been executed, so will it be execute when timer ends? Answer is Yes! function executes after the timer ends if its been called again in waiting period. The idea of throttling is to execute function once after fixed time interval.</p>
+<h3 id="throttling-implementation-in-plain-javascript">Throttling implementation in plain Javascript:</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">throttle</span> (<span style="color:#a6e22e">callback</span>, <span style="color:#a6e22e">limit</span>) {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;                  <span style="color:#75715e">// Initially, we&#39;re not waiting
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> () {               <span style="color:#75715e">// We return a throttled function
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">wait</span>) {                   <span style="color:#75715e">// If we&#39;re not waiting
+</span><span style="color:#75715e"></span>	    <span style="color:#a6e22e">callback</span>.<span style="color:#a6e22e">call</span>();           <span style="color:#75715e">// Execute users function
+</span><span style="color:#75715e"></span>	    <span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;               <span style="color:#75715e">// Prevent future invocations
+</span><span style="color:#75715e"></span>	    <span style="color:#a6e22e">setTimeout</span>(<span style="color:#66d9ef">function</span> () {   <span style="color:#75715e">// After a period of time
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;          <span style="color:#75715e">// And allow future invocations
+</span><span style="color:#75715e"></span>	    }, <span style="color:#a6e22e">limit</span>);
+	}
+    }
+}
+</code></pre></div><h2 id="conclusion">Conclusion</h2>
+<pre><code>Debouncing and Throttling are just concepts or techniques can be use for solving specific set of problems, hence they are not provided by JavaScript itself. I am not giving here use case scenarios because I do not wish to limit one's thinking to just finite set of use cases. This
+</code></pre>
+<p>concepts are abstract and can be use to solve problems from various domains.</p>
+<p>Intention of writing this article was give you more clearer explanations of this two techniques, for which I struggled a lot to wrap my head around. Criticism is always welcome!</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://saurabhkukade.com/tags/tag1">tag1</a></span><span class="tag"><a href="https://saurabhkukade.com/tags/tag2">tag2</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>698 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-03-31 00:00 &#43;0530</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h"></span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+
+                    
+                        <span class="button next">
+                            <a href="https://saurabhkukade.com/posts/2020/07/understanding-zmap-file-format/">
+                                <span class="button__text">Understanding ZMAP&#43; File Format</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    
+                </div>
+            </div>
+        
+            <div id="comments" class="thin">
+                <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-saurabhkukade-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            
+                <span><a href="https://saurabhkukade.com">Saurabh Kukade</a></span>
+            
+            <span></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://saurabhkukade.com/bundle.min.2d5469329143160ae2456a69c3c76dc2d0a3b212b46afe291a51bd68650ed6f8697e001dab54f1c272c77ce08092a8c55e5bb4314e0ee334aab4b927ec896638.js" integrity="sha512-LVRpMpFDFgriRWppw8dtwtCjshK0av4pGlG9aGUO1vhpfgAdq1TxwnLHfOCAkqjFXlu0MU4O4zSqtLkn7IlmOA=="></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-119315161-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+
+
+    </body>
+</html>

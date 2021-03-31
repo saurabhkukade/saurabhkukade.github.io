@@ -5,7 +5,18 @@
     <link>https://saurabhkukade.com/</link>
     <description>Recent content on SAURABH KUKADE</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 10 Jul 2020 00:00:00 +0530</lastBuildDate><atom:link href="https://saurabhkukade.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 31 Mar 2021 00:00:00 +0530</lastBuildDate><atom:link href="https://saurabhkukade.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Throttling &amp; Debouncing</title>
+      <link>https://saurabhkukade.com/posts/2021/03/throttling-debouncing/</link>
+      <pubDate>Wed, 31 Mar 2021 00:00:00 +0530</pubDate>
+      
+      <guid>https://saurabhkukade.com/posts/2021/03/throttling-debouncing/</guid>
+      <description>Introduction In this article, we will discuss debouncing and throttling techniques that can be use to optimize the performance of web app by preventing unnecessary API calls and load on the server. Both this techniques may look similar but they are not, use case scenarios of both them are very different.
+Debounce What is a debounce?
+Deboucing is technique to delay execution of invoked function for specific time duration and if the same function gets invoked again in that time duration then again delay the execution of this newly invoked function for specific time duration by scrapping the previous function call.</description>
+    </item>
+    
     <item>
       <title>Understanding ZMAP&#43; File Format</title>
       <link>https://saurabhkukade.com/posts/2020/07/understanding-zmap-file-format/</link>
