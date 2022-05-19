@@ -10,7 +10,7 @@
 <meta name="keywords" content=", python" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="#252627" />
-<link rel="canonical" href="https://saurabhkukade.com/2019/10/14/meta-programming-in-python/" />
+<link rel="canonical" href="https://saurabhkukade.com/2019/10/14/Meta-programming-In-Python/" />
 
 
     <title>
@@ -21,13 +21,12 @@
 
 
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
     type="text/css">
 
 
 
-<link rel="stylesheet" href="https://saurabhkukade.com/main.min.dcc36a099379c678c3d10e64681a1e3fdcfbbe48ad337afa070c0ae4eed36e22.css">
-
+<link rel="stylesheet" href="https://saurabhkukade.com/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
 
 
 
@@ -35,21 +34,16 @@
     <link rel="icon" type="image/png" sizes="32x32" href="https://saurabhkukade.com/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://saurabhkukade.com/favicon-16x16.png">
     <link rel="manifest" href="https://saurabhkukade.com/site.webmanifest">
-    <link rel="mask-icon" href="https://saurabhkukade.com/safari-pinned-tab.svg" color="#252627">
+    <link rel="mask-icon" href="https://saurabhkukade.com/safari-pinned-tab.svg" color="">
     <link rel="shortcut icon" href="https://saurabhkukade.com/favicon.ico">
-    <meta name="msapplication-TileColor" content="#252627">
-    <meta name="theme-color" content="#252627">
+    <meta name="msapplication-TileColor" content="">
+
 
 <meta itemprop="name" content="Meta-programming In Python">
 <meta itemprop="description" content="“Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away.” – Antoine de Saint-Exupery
- Recently I encountered with very fascinating concept which is &ldquo;Meta-programming in Python&rdquo;. I would like to share my findings about this topic in this article. I hope it may help you to wrap your head around this because they say it is tough nut to crack.">
-<meta itemprop="datePublished" content="2019-10-14T16:55:25+05:30" />
+ Recently I encountered with very fascinating concept which is &ldquo;Meta-programming in Python&rdquo;. I would like to share my findings about this topic in this article. I hope it may help you to wrap your head around this because they say it is tough nut to crack."><meta itemprop="datePublished" content="2019-10-14T16:55:25+05:30" />
 <meta itemprop="dateModified" content="2019-10-14T16:55:25+05:30" />
-<meta itemprop="wordCount" content="936">
-<meta itemprop="image" content="https://saurabhkukade.com"/>
-
-
-
+<meta itemprop="wordCount" content="936"><meta itemprop="image" content="https://saurabhkukade.com"/>
 <meta itemprop="keywords" content="python," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://saurabhkukade.com"/>
@@ -57,6 +51,9 @@
 <meta name="twitter:title" content="Meta-programming In Python"/>
 <meta name="twitter:description" content="“Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away.” – Antoine de Saint-Exupery
  Recently I encountered with very fascinating concept which is &ldquo;Meta-programming in Python&rdquo;. I would like to share my findings about this topic in this article. I hope it may help you to wrap your head around this because they say it is tough nut to crack."/>
+
+
+
 
 
 
@@ -71,9 +68,27 @@
 
 
 
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-119315161-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
     </head>
 
-    <body class="dark-theme">
+    
+        <body>
+    
+    
         <div class="container">
             <header class="header">
     <span class="header__inner">
@@ -95,7 +110,7 @@
         <span class="header__right">
             
                 <nav class="menu">
-    <ul class="menu__inner"><li><a href="https://saurabhkukade.com/posts/">Posts</a></li><li><a href="https://saurabhkukade.com/about/">About Me</a></li><li><a href="https://saurabhkukade.com/photography/">Photography</a></li>
+    <ul class="menu__inner"><li><a href="https://saurabhkukade.com/posts/">Posts</a></li><li><a href="https://saurabhkukade.com/about/">About Me</a></li><li><a href="https://instagram.com/saurabhkukade">Photography</a></li>
     </ul>
 </nav>
 
@@ -106,13 +121,6 @@
                     </svg>
                 </span>
             
-
-            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
-  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
-  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
-</svg>
-</span>
         </span>
     </span>
 </header>
@@ -120,25 +128,33 @@
 
             <div class="content">
                 
-    <main class="post">
+  <main class="post">
 
-        <div class="post-info">
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>5 minutes
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        5 minutes
 
-            
+        
+      </p>
+    </div>
 
-            </p>
-        </div>
+    <article>
+      <h1 class="post-title">
+        <a href="https://saurabhkukade.com/2019/10/14/Meta-programming-In-Python/">Meta-programming In Python</a>
+      </h1>
 
-        <article>
-            <h1 class="post-title">
-                <a href="https://saurabhkukade.com/2019/10/14/meta-programming-in-python/">Meta-programming In Python</a>
-            </h1>
+      
 
-            
+      
 
-            <div class="post-content">
-                <blockquote>
+      
+
+      <div class="post-content">
+        <blockquote>
 <p>“Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away.” – Antoine de Saint-Exupery</p>
 </blockquote>
 <p>Recently I encountered with very fascinating concept which is &ldquo;Meta-programming in Python&rdquo;. I would like to share my
@@ -163,7 +179,7 @@ it is tough nut to crack.</p>
 <h4 id="decorators">Decorators</h4>
 <p>Decorator is way to add new functionality to existing function without modifying its original structure.</p>
 <p>For instance we have this 3 following functions:</p>
-<pre><code>def add(x, y):
+<pre tabindex="0"><code>def add(x, y):
     return x + y    
 
 def sub(x, y):
@@ -173,16 +189,16 @@ def mul(x, y):
     return x * y    
 </code></pre><p>Now we need to print function name and parameter values when function get called. This should be applicable to all three function above.
 Naive way is to add print/log statement to all three functions. But this sounds very repetitive work and also need to modify each function body.</p>
-<pre><code>def add(x, y):
-    print(&quot;add is called with parameter {0},{1}&quot;.format(x,y))
+<pre tabindex="0"><code>def add(x, y):
+    print(&#34;add is called with parameter {0},{1}&#34;.format(x,y))
     return x + y    
 
 def sub(x, y):
-    print(&quot;sub is called with parameter {0},{1}&quot;.format(x,y))
+    print(&#34;sub is called with parameter {0},{1}&#34;.format(x,y))
     return x - y
     
 def mul(x, y):
-    print(&quot;mul is called with parameter {0},{1}&quot;.format(x,y))
+    print(&#34;mul is called with parameter {0},{1}&#34;.format(x,y))
     return x * y    
 
 print(add(5,3))
@@ -197,13 +213,12 @@ sub is called with parameter 5, 3
 2
 mul is called with parameter 5, 3
 15   
-
 </code></pre><p>Can we do better?
 Of course we can because by the grace of god we are programmers and programmers are intelligent.
 We can achieve this by writing decorator function and by NOT modifying any of existing function body.</p>
-<pre><code>def my_decorator(func):
+<pre tabindex="0"><code>def my_decorator(func):
     def wrapper_function(*args):
-        print(&quot;{0} is called with parameter {1}&quot;.format(func.__name__, args))
+        print(&#34;{0} is called with parameter {1}&#34;.format(func.__name__, args))
         return func(*args)
     return wrapper_function
 
@@ -243,7 +258,7 @@ Meta-class can add or subtract method or field to ordinary class.
 Python has one special class &ldquo;type&rdquo; class which is default meta-class. All custom type class must inherit from type class.</p>
 <p>For instance if we have class &ldquo;Calc&rdquo; having three class methods and we want to provide debug functionality to all
 the methods in one class then we can use meta-class for this.</p>
-<pre><code>class Calc():
+<pre tabindex="0"><code>class Calc():
     def add(self, x, y):
         return x + y
     
@@ -254,10 +269,10 @@ the methods in one class then we can use meta-class for this.</p>
         return x * y
 </code></pre><p>First we need to create a meta class &ldquo;MetaClassDebug&rdquo; having debug functionality and make Calc class inherit from MetaClassDebug.
 And when we call any method from Calc class it will get invoke with our debug_function.</p>
-<pre><code>def debug_function(func):
+<pre tabindex="0"><code>def debug_function(func):
 
    def wrapper(*args, **kwargs):
-       print(&quot;{0} is called with parameter {1}&quot;.format(func.__qualname__, args[1:]))
+       print(&#34;{0} is called with parameter {1}&#34;.format(func.__qualname__, args[1:]))
        return func(*args, **kwargs)
    
    return wrapper
@@ -304,7 +319,6 @@ Calc.sub is called with parameter (2, 3)
 -1
 Calc.mul is called with parameter (2, 3)
 6
-
 </code></pre><p>Bingo!
 In above snippet we create a meta-class <em>MetaClassDebug</em> and write <em><strong>new</strong></em> method which is responsible of creating
 instance of class and applied our decorator function <em>debug_function</em> to the object(instance) which will get created
@@ -316,53 +330,82 @@ There can be much achieved by meta-class like adding a method or field to class 
 I hope this article would have helped you to get familiarize with the concept of meta-programming.
 Comment as well as criticism is always welcome!</p>
 
-            </div>
-        </article>
+      </div>
+    </article>
 
-        <hr />
+    <hr />
 
-        <div class="post-info">
-                <p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://saurabhkukade.com/tags/python">python</a></span>
-                </p>
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>936 Words</p>
+        <span class="tag"><a href="https://saurabhkukade.com/tags/python/">python</a></span>
+        
+    </p>
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-10-14 16:55 &#43;0530</p>
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        936 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2019-10-14 16:55 &#43;0530
+        
+
+         
+          
+        
+      </p>
+    </div>
+
+    
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://saurabhkukade.com/2019/12/13/Erlang-is-not-just-a-language,-it-is-a-philosophy/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Erlang is not just a language, it is a philosophy</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://saurabhkukade.com/2018/10/26/Python%20-%20A%20Better%20Scripting%20Language/">
+                    <span class="button__text">Python - A Better Scripting Language.</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
         </div>
+    </div>
 
-        
-            <div class="pagination">
-                <div class="pagination__title">
-                    <span class="pagination__title-h"></span>
-                    <hr />
-                </div>
 
-                <div class="pagination__buttons">
-                    
-                        <span class="button previous">
-                            <a href="https://saurabhkukade.com/2019/12/13/erlang-is-not-just-a-language-it-is-a-philosophy/">
-                                <span class="button__icon">←</span>
-                                <span class="button__text">Erlang is not just a language, it is a philosophy</span>
-                            </a>
-                        </span>
-                    
-
-                    
-                        <span class="button next">
-                            <a href="https://saurabhkukade.com/2018/10/26/python-a-better-scripting-language/">
-                                <span class="button__text">Python - A Better Scripting Language.</span>
-                                <span class="button__icon">→</span>
-                            </a>
-                        </span>
-                    
-                </div>
-            </div>
-        
-            <div id="comments" class="thin">
-                <div id="disqus_thread"></div>
+    
+      
+        <div id="comments">
+          <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -380,26 +423,20 @@ Comment as well as criticism is always welcome!</p>
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-            </div>
-    </main>
+        </div>
+      
+    
+
+    
+
+  </main>
 
             </div>
 
             
                 <footer class="footer">
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>&copy; 2020</span>
-            
-                <span><a href="https://saurabhkukade.com">Saurabh Kukade</a></span>
-            
-            <span></span>
-        </div>
-    </div>
-    <div class="footer__inner">
-        <div class="footer__content">
-        </div>
-    </div>
+    
+    
 </footer>
 
             
@@ -409,16 +446,7 @@ Comment as well as criticism is always welcome!</p>
 
 
 
-
-<script type="text/javascript" src="https://saurabhkukade.com/bundle.min.2d5469329143160ae2456a69c3c76dc2d0a3b212b46afe291a51bd68650ed6f8697e001dab54f1c272c77ce08092a8c55e5bb4314e0ee334aab4b927ec896638.js" integrity="sha512-LVRpMpFDFgriRWppw8dtwtCjshK0av4pGlG9aGUO1vhpfgAdq1TxwnLHfOCAkqjFXlu0MU4O4zSqtLkn7IlmOA=="></script>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-119315161-1', 'auto');
-        ga('send', 'pageview');
-    </script>
+<script type="text/javascript" src="https://saurabhkukade.com/bundle.min.a2c5b062c87998f04d1b5dfb6a89a1b2d79786c21d0cb63a05e8a2082984b64b77d80955e3b97eab17273775162ba372511b711fea2f7608f216e68a67bb22d6.js" integrity="sha512-osWwYsh5mPBNG137aomhsteXhsIdDLY6BeiiCCmEtkt32AlV47l&#43;qxcnN3UWK6NyURtxH&#43;ovdgjyFuaKZ7si1g=="></script>
 
 
 

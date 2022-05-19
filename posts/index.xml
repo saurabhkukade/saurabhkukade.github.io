@@ -4,13 +4,13 @@
         <link>https://saurabhkukade.com/posts/</link>
         <description>Recent content in Posts on SAURABH KUKADE</description>
         <generator>Hugo -- gohugo.io</generator>
-        <lastBuildDate>Wed, 31 Mar 2021 00:00:00 +0530</lastBuildDate>
+        <lastBuildDate>Wed, 31 Mar 2021 00:00:00 +0000</lastBuildDate>
         <atom:link href="https://saurabhkukade.com/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>Debouncing &amp; Throttling Explained</title>
             <link>https://saurabhkukade.com/posts/2021/03/debouncing-throttling-explained/</link>
-            <pubDate>Wed, 31 Mar 2021 00:00:00 +0530</pubDate>
+            <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
             
             <guid>https://saurabhkukade.com/posts/2021/03/debouncing-throttling-explained/</guid>
             <description>Introduction In this article, we will discuss Debouncing and throttling techniques that can be use to optimize the performance of web app by preventing unnecessary API calls and load on the server. Both this techniques may look similar but they are not, use case scenarios of both them are very different.
@@ -25,31 +25,31 @@ Both this techniques may look similar but they are not, use case scenarios of bo
 <p>In other words, execution of function is delayed until it aggregates the input to function in specified time interval to save the frequent and unnecessary server calls.
 This can be achieved by passing the actual function to Debouncing function and hence we call it as the function is being debounced.</p>
 <p>Lets see the generic debouce function in plain vanilla JavaScript.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">debounce</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">invokedFunction</span>, <span style="color:#a6e22e">waitingTime</span>) =&gt; {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">timeoutId</span>;
-
-  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">executedFunction</span>(...<span style="color:#a6e22e">args</span>) {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">later</span> <span style="color:#f92672">=</span> () =&gt; {
-      <span style="color:#a6e22e">clearTimeout</span>(<span style="color:#a6e22e">timeoutId</span>);
-      <span style="color:#a6e22e">invokedFunction</span>(...<span style="color:#a6e22e">args</span>);
-    };
-
-    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">timeoutId</span>){
-      <span style="color:#a6e22e">clearTimeout</span>(<span style="color:#a6e22e">timeoutId</span>);
-    }
-    <span style="color:#a6e22e">timeoutId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">later</span>, <span style="color:#a6e22e">waitingTime</span>);
-  };
-};
-</code></pre></div><p>Now here `debounce` is a higher order function which is taking an actual function and waiting time and returning a another function. This is done to have
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">debounce</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">invokedFunction</span>, <span style="color:#a6e22e">waitingTime</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">timeoutId</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">executedFunction</span>(...<span style="color:#a6e22e">args</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">later</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">clearTimeout</span>(<span style="color:#a6e22e">timeoutId</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">invokedFunction</span>(...<span style="color:#a6e22e">args</span>);
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">timeoutId</span>){
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">clearTimeout</span>(<span style="color:#a6e22e">timeoutId</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">timeoutId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">later</span>, <span style="color:#a6e22e">waitingTime</span>);
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Now here `debounce` is a higher order function which is taking an actual function and waiting time and returning a another function. This is done to have
 closure on actual function and waiting time and timeoutId.</p>
 <p>This debounce function can be use as</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">debouncedFunction</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">debounce</span>(
-   () =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Click event triggered&#34;</span>), <span style="color:#ae81ff">1000</span>)
-
-window.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, <span style="color:#a6e22e">debouncedFunction</span>);
-</code></pre></div><p>Whenever user will click on the window, function attached to the event will not be executed instantly. This debounce function will wait for 1 second to listen if this
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">debouncedFunction</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">debounce</span>(
+</span></span><span style="display:flex;"><span>   () =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Click event triggered&#34;</span>), <span style="color:#ae81ff">1000</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>window.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, <span style="color:#a6e22e">debouncedFunction</span>);
+</span></span></code></pre></div><p>Whenever user will click on the window, function attached to the event will not be executed instantly. This debounce function will wait for 1 second to listen if this
 function gets invoke again and if it does not then function will be executed after 1 second or if user clicks again within 1 second then countdown timer gets reset and debounce
 function will again wait for another 1 second to execute this function by scrapping the previous function call by using clearTimeout function with help of timeoutId of previous function.</p>
 <h2 id="throttling">Throttling</h2>
@@ -62,19 +62,19 @@ starts for 3 second, within this waiting time if function is called again then i
 only after 3 second are elapsed. This is how we can control rate of function execution.</p>
 <p>But this above explanation is not complete, what if the event is fired at 2nd second and it has not been executed, so will it be execute when timer ends? Answer is Yes! function executes after the timer ends if its been called again in waiting period. The idea of throttling is to execute function once after fixed time interval.</p>
 <h3 id="throttling-implementation-in-plain-javascript">Throttling implementation in plain Javascript:</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">throttle</span>(<span style="color:#a6e22e">callback</span>, <span style="color:#a6e22e">limit</span>) {
-  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;                 <span style="color:#75715e">// Initially, we&#39;re not waiting
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> () {              <span style="color:#75715e">// We return a throttled function
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">wait</span>) {                    <span style="color:#75715e">// If we&#39;re not waiting
-</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">callback</span>.<span style="color:#a6e22e">call</span>();              <span style="color:#75715e">// Execute users function
-</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;                  <span style="color:#75715e">// Prevent future invocations
-</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">setTimeout</span>(<span style="color:#66d9ef">function</span> () {      <span style="color:#75715e">// After a period of time
-</span><span style="color:#75715e"></span>	      <span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;               <span style="color:#75715e">// And allow future invocations
-</span><span style="color:#75715e"></span>      }, <span style="color:#a6e22e">limit</span>);
-    }
-  };
-}
-</code></pre></div><h2 id="conclusion">Conclusion</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">throttle</span>(<span style="color:#a6e22e">callback</span>, <span style="color:#a6e22e">limit</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;                 <span style="color:#75715e">// Initially, we&#39;re not waiting
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> () {              <span style="color:#75715e">// We return a throttled function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">wait</span>) {                    <span style="color:#75715e">// If we&#39;re not waiting
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">callback</span>.<span style="color:#a6e22e">call</span>();              <span style="color:#75715e">// Execute users function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;                  <span style="color:#75715e">// Prevent future invocations
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">setTimeout</span>(<span style="color:#66d9ef">function</span> () {      <span style="color:#75715e">// After a period of time
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	      <span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;               <span style="color:#75715e">// And allow future invocations
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      }, <span style="color:#a6e22e">limit</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>Debouncing and Throttling are just concepts or techniques can be use for solving specific set of problems, hence they are not provided by JavaScript itself. I am not giving here use case scenarios because I do not wish to limit one&rsquo;s thinking to just finite set of use cases. This
 concepts are abstract and can be use to solve problems from various domains.</p>
 <p>Intention of writing this article was give you more clearer explanations of this two techniques, for which I struggled a lot to wrap my head around. Criticism is always welcome!</p>
@@ -84,7 +84,7 @@ concepts are abstract and can be use to solve problems from various domains.</p>
         <item>
             <title>Understanding ZMAP&#43; File Format</title>
             <link>https://saurabhkukade.com/posts/2020/07/understanding-zmap-file-format/</link>
-            <pubDate>Fri, 10 Jul 2020 00:00:00 +0530</pubDate>
+            <pubDate>Fri, 10 Jul 2020 00:00:00 +0000</pubDate>
             
             <guid>https://saurabhkukade.com/posts/2020/07/understanding-zmap-file-format/</guid>
             <description>In this article I want to share my findings on how to interpret the ZMAP file format.
@@ -97,7 +97,7 @@ It is commonly used in applications in the Oil and Gas Exploration field&rsquo;s
 <p>It is for gridded data. The format can also support point and polygon data, but only one data type is allowed in each file.
 There are a specific set of header rows that define how the data is written in the file and actual data followed by the header.</p>
 <p>Below is sample zmap+ file.</p>
-<pre><code class="language-nil" data-lang="nil">!
+<pre tabindex="0"><code class="language-nil" data-lang="nil">!
 ! File created by DMBTools2.GridFileFormats.ZmapPlusFile
 !
 @GRID FILE, GRID, 4
@@ -119,7 +119,7 @@ Let us decode them one by one.</p>
 <h2 id="decoding-the-header">Decoding the header</h2>
 <p>The header section is starts with the first line that has an &ldquo;@&rdquo; symbol.
 The data starts on the first line after the last &ldquo;@&rdquo; symbol, and there may only be two.</p>
-<pre><code class="language-nil" data-lang="nil">@GRID FILE, GRID, 4
+<pre tabindex="0"><code class="language-nil" data-lang="nil">@GRID FILE, GRID, 4
 20, -9999.0000000, , 7, 1
 6, 4, 0, 200, 0, 300
 0.0, 0.0, 0.0
@@ -161,7 +161,7 @@ Let see the fields line by line.</p>
 </li>
 </ul>
 <h2 id="decoding-the-data-section">Decoding the data section</h2>
-<pre><code class="language-nil" data-lang="nil">@
+<pre tabindex="0"><code class="language-nil" data-lang="nil">@
        -9999.0000000       -9999.0000000           3.0000000          32.0000000
 	  88.0000000          13.0000000
        -9999.0000000          20.0000000           8.0000000          42.0000000
@@ -316,7 +316,7 @@ it is tough nut to crack.</p>
 <h4 id="decorators">Decorators</h4>
 <p>Decorator is way to add new functionality to existing function without modifying its original structure.</p>
 <p>For instance we have this 3 following functions:</p>
-<pre><code>def add(x, y):
+<pre tabindex="0"><code>def add(x, y):
     return x + y    
 
 def sub(x, y):
@@ -326,16 +326,16 @@ def mul(x, y):
     return x * y    
 </code></pre><p>Now we need to print function name and parameter values when function get called. This should be applicable to all three function above.
 Naive way is to add print/log statement to all three functions. But this sounds very repetitive work and also need to modify each function body.</p>
-<pre><code>def add(x, y):
-    print(&quot;add is called with parameter {0},{1}&quot;.format(x,y))
+<pre tabindex="0"><code>def add(x, y):
+    print(&#34;add is called with parameter {0},{1}&#34;.format(x,y))
     return x + y    
 
 def sub(x, y):
-    print(&quot;sub is called with parameter {0},{1}&quot;.format(x,y))
+    print(&#34;sub is called with parameter {0},{1}&#34;.format(x,y))
     return x - y
     
 def mul(x, y):
-    print(&quot;mul is called with parameter {0},{1}&quot;.format(x,y))
+    print(&#34;mul is called with parameter {0},{1}&#34;.format(x,y))
     return x * y    
 
 print(add(5,3))
@@ -350,13 +350,12 @@ sub is called with parameter 5, 3
 2
 mul is called with parameter 5, 3
 15   
-
 </code></pre><p>Can we do better?
 Of course we can because by the grace of god we are programmers and programmers are intelligent.
 We can achieve this by writing decorator function and by NOT modifying any of existing function body.</p>
-<pre><code>def my_decorator(func):
+<pre tabindex="0"><code>def my_decorator(func):
     def wrapper_function(*args):
-        print(&quot;{0} is called with parameter {1}&quot;.format(func.__name__, args))
+        print(&#34;{0} is called with parameter {1}&#34;.format(func.__name__, args))
         return func(*args)
     return wrapper_function
 
@@ -396,7 +395,7 @@ Meta-class can add or subtract method or field to ordinary class.
 Python has one special class &ldquo;type&rdquo; class which is default meta-class. All custom type class must inherit from type class.</p>
 <p>For instance if we have class &ldquo;Calc&rdquo; having three class methods and we want to provide debug functionality to all
 the methods in one class then we can use meta-class for this.</p>
-<pre><code>class Calc():
+<pre tabindex="0"><code>class Calc():
     def add(self, x, y):
         return x + y
     
@@ -407,10 +406,10 @@ the methods in one class then we can use meta-class for this.</p>
         return x * y
 </code></pre><p>First we need to create a meta class &ldquo;MetaClassDebug&rdquo; having debug functionality and make Calc class inherit from MetaClassDebug.
 And when we call any method from Calc class it will get invoke with our debug_function.</p>
-<pre><code>def debug_function(func):
+<pre tabindex="0"><code>def debug_function(func):
 
    def wrapper(*args, **kwargs):
-       print(&quot;{0} is called with parameter {1}&quot;.format(func.__qualname__, args[1:]))
+       print(&#34;{0} is called with parameter {1}&#34;.format(func.__qualname__, args[1:]))
        return func(*args, **kwargs)
    
    return wrapper
@@ -457,7 +456,6 @@ Calc.sub is called with parameter (2, 3)
 -1
 Calc.mul is called with parameter (2, 3)
 6
-
 </code></pre><p>Bingo!
 In above snippet we create a meta-class <em>MetaClassDebug</em> and write <em><strong>new</strong></em> method which is responsible of creating
 instance of class and applied our decorator function <em>debug_function</em> to the object(instance) which will get created
@@ -519,51 +517,49 @@ Comment as well as criticism is always welcome!</p>
 <h2 id="let-me-show-you-short-example">Let me show you short example.</h2>
 <p>Lets assume we have one file which has some text containing IP address (similar to output of &lsquo;ip addr&rsquo; command). Now the task is first extract all the IP addresses from the file and then check one by one that IP address is up or down. Task may sound simple but I urge you to take a pause here and try to write script for the same using shell commands or at least just try to think that how it could be done.</p>
 <p>file: sample_text_file.txt</p>
-<pre><code>~]# ip address add 192.1.2.223/24 dev eth1
+<pre tabindex="0"><code>~]# ip address add 192.1.2.223/24 dev eth1
 ~]# ip address add 192.165.4.223/24 dev eth0
 ~]# ip addr
 3: eth1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000
     link/ether 52:54:00:fb:77:9e brd ff:ff:ff:ff:ff:ff
     inet 192.168.8.1/24 scope global eth1
     inet 192.168.4.23/24 scope global eth1
-
 </code></pre><p>Done?</p>
 <p>Now lets do this with python script.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sys
-<span style="color:#f92672">import</span> os
-<span style="color:#f92672">import</span> re
-
-<span style="color:#75715e"># function to extract all ip address from a file.</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_all_ip_from_file</span>(file_path):
-
-    file_data <span style="color:#f92672">=</span> open(file_path, <span style="color:#e6db74">&#34;r&#34;</span>)<span style="color:#f92672">.</span>readlines()
-    ip_address_list <span style="color:#f92672">=</span> [] <span style="color:#75715e"># List to store ip address</span>
-    <span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> data:
-        ips_on_line <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>findall( <span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;[0-9]+(?:\.[0-9]+){3}&#39;</span>, line ) 
-        ip_address_list <span style="color:#f92672">=</span> ip_adress_list <span style="color:#f92672">+</span> ips_on_line
-    <span style="color:#66d9ef">return</span> ip_address_list
-
-<span style="color:#75715e"># function to check if the ip is Up or Down</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">check_if_ip_up_or_down</span>(ip):
-
-    response <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>system(<span style="color:#e6db74">&#34;ping -c 1 &#34;</span> <span style="color:#f92672">+</span> ip) 
-    <span style="color:#66d9ef">if</span> response <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
-        <span style="color:#66d9ef">print</span> ip, <span style="color:#e6db74">&#39;is up!&#39;</span>
-        <span style="color:#66d9ef">return</span> True
-    <span style="color:#66d9ef">else</span>:
-        <span style="color:#66d9ef">print</span> ip, <span style="color:#e6db74">&#39;is down!&#39;</span>
-        <span style="color:#66d9ef">return</span> False
-
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
-    ip_list <span style="color:#f92672">=</span> get_all_ip_from_file(<span style="color:#e6db74">&#39;sample_text_file.txt&#39;</span>)
-    <span style="color:#66d9ef">for</span> ip <span style="color:#f92672">in</span> ip_list:
-        status <span style="color:#f92672">=</span> check_if_ip_up_or_down(ip)
-        <span style="color:#66d9ef">print</span> ip <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; --&gt; &#34;</span><span style="color:#f92672">+</span> str(status)
-
-main()
-
-</code></pre></div><p>I hope you get the point with this little demo. Please feel free to put your comment/opinion/critisim in comment section down below. I will be happy to discuss more. Happy coding!!!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> re
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># function to extract all ip address from a file.</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_all_ip_from_file</span>(file_path):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    file_data <span style="color:#f92672">=</span> open(file_path, <span style="color:#e6db74">&#34;r&#34;</span>)<span style="color:#f92672">.</span>readlines()
+</span></span><span style="display:flex;"><span>    ip_address_list <span style="color:#f92672">=</span> [] <span style="color:#75715e"># List to store ip address</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> data:
+</span></span><span style="display:flex;"><span>        ips_on_line <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>findall( <span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;[0-9]+(?:\.[0-9]+)</span><span style="color:#e6db74">{3}</span><span style="color:#e6db74">&#39;</span>, line ) 
+</span></span><span style="display:flex;"><span>        ip_address_list <span style="color:#f92672">=</span> ip_adress_list <span style="color:#f92672">+</span> ips_on_line
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ip_address_list
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># function to check if the ip is Up or Down</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">check_if_ip_up_or_down</span>(ip):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    response <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>system(<span style="color:#e6db74">&#34;ping -c 1 &#34;</span> <span style="color:#f92672">+</span> ip) 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> response <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        print ip, <span style="color:#e6db74">&#39;is up!&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        print ip, <span style="color:#e6db74">&#39;is down!&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span>    ip_list <span style="color:#f92672">=</span> get_all_ip_from_file(<span style="color:#e6db74">&#39;sample_text_file.txt&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> ip <span style="color:#f92672">in</span> ip_list:
+</span></span><span style="display:flex;"><span>        status <span style="color:#f92672">=</span> check_if_ip_up_or_down(ip)
+</span></span><span style="display:flex;"><span>        print ip <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; --&gt; &#34;</span><span style="color:#f92672">+</span> str(status)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>main()
+</span></span></code></pre></div><p>I hope you get the point with this little demo. Please feel free to put your comment/opinion/critisim in comment section down below. I will be happy to discuss more. Happy coding!!!</p>
 ]]></content>
         </item>
         
