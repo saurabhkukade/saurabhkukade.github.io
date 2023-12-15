@@ -5,16 +5,15 @@
     <link>https://saurabhkukade.com/tags/lambda/</link>
     <description>Recent content in lambda on SAURABH KUKADE</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 22 May 2018 16:55:25 +0530</lastBuildDate><atom:link href="https://saurabhkukade.com/tags/lambda/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Tue, 22 May 2018 16:55:25 +0530</lastBuildDate>
+    <atom:link href="https://saurabhkukade.com/tags/lambda/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The World of Lambdas</title>
       <link>https://saurabhkukade.com/2018/05/22/The-World-Lambdas-Introduction/</link>
       <pubDate>Tue, 22 May 2018 16:55:25 +0530</pubDate>
-      
       <guid>https://saurabhkukade.com/2018/05/22/The-World-Lambdas-Introduction/</guid>
-      <description>Introduction To World Of Lambdas. Lambda expression is appearing in every other programming language and gaining a popularity amongs the developers. So what is the lambda expression? Why should we use it? Is it just anonymous function? what powers does it gives to programmer? Lets discuss all this in details in this series of posts.
-In this post, we will see the brief introduction to lambda expressions and how to express them in programming language independent way.</description>
+      <description>Introduction To World Of Lambdas. Lambda expression is appearing in every other programming language and gaining a popularity amongs the developers. So what is the lambda expression? Why should we use it? Is it just anonymous function? what powers does it gives to programmer? Lets discuss all this in details in this series of posts.&#xA;In this post, we will see the brief introduction to lambda expressions and how to express them in programming language independent way.</description>
     </item>
-    
   </channel>
 </rss>

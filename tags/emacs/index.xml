@@ -5,17 +5,15 @@
     <link>https://saurabhkukade.com/tags/emacs/</link>
     <description>Recent content in emacs on SAURABH KUKADE</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 12 Jun 2017 16:55:25 +0530</lastBuildDate><atom:link href="https://saurabhkukade.com/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Mon, 12 Jun 2017 16:55:25 +0530</lastBuildDate>
+    <atom:link href="https://saurabhkukade.com/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why Emacs</title>
       <link>https://saurabhkukade.com/2019/06/04/Why-Emacs/</link>
       <pubDate>Mon, 12 Jun 2017 16:55:25 +0530</pubDate>
-      
       <guid>https://saurabhkukade.com/2019/06/04/Why-Emacs/</guid>
-      <description>&amp;ldquo;Emacs outshines all other editing software in approximately the same way that the noonday sun does the stars. It is not just bigger and brighter; it simply makes everything else vanish.”
-  -Neal Stephenson, “In the Beginning was the Command Line”
- Introduction This is my first blog post about Emacs. I want to discuss step by step customization of Emacs for beginner. If you’re new to Emacs then you are in the right place, if you’re already familiar with Emacs then that is even better, I assure you that we will get to know many new things in here.</description>
+      <description>&amp;ldquo;Emacs outshines all other editing software in approximately the same way that the noonday sun does the stars. It is not just bigger and brighter; it simply makes everything else vanish.”&#xA;-Neal Stephenson, “In the Beginning was the Command Line”&#xA;Introduction This is my first blog post about Emacs. I want to discuss step by step customization of Emacs for beginner. If you’re new to Emacs then you are in the right place, if you’re already familiar with Emacs then that is even better, I assure you that we will get to know many new things in here.</description>
     </item>
-    
   </channel>
 </rss>

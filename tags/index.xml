@@ -5,60 +5,50 @@
     <link>https://saurabhkukade.com/tags/</link>
     <description>Recent content in Tags on SAURABH KUKADE</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 31 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://saurabhkukade.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Wed, 31 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://saurabhkukade.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>javascript</title>
       <link>https://saurabhkukade.com/tags/javascript/</link>
       <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://saurabhkukade.com/tags/javascript/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>zmap</title>
       <link>https://saurabhkukade.com/tags/zmap/</link>
       <pubDate>Fri, 10 Jul 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://saurabhkukade.com/tags/zmap/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Erlang</title>
       <link>https://saurabhkukade.com/tags/erlang/</link>
       <pubDate>Fri, 13 Dec 2019 16:55:25 +0530</pubDate>
-      
       <guid>https://saurabhkukade.com/tags/erlang/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>python</title>
       <link>https://saurabhkukade.com/tags/python/</link>
       <pubDate>Mon, 14 Oct 2019 16:55:25 +0530</pubDate>
-      
       <guid>https://saurabhkukade.com/tags/python/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>lambda</title>
       <link>https://saurabhkukade.com/tags/lambda/</link>
       <pubDate>Tue, 22 May 2018 16:55:25 +0530</pubDate>
-      
       <guid>https://saurabhkukade.com/tags/lambda/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>emacs</title>
       <link>https://saurabhkukade.com/tags/emacs/</link>
       <pubDate>Mon, 12 Jun 2017 16:55:25 +0530</pubDate>
-      
       <guid>https://saurabhkukade.com/tags/emacs/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>
